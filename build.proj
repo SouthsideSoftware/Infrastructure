@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets ="Dist" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- See https://onpointondemand.fogbugz.com/default.asp?W695 for documentation -->
+  <Import Project="$(MSBuildProjectDirectory)\Tools\MSBuild\BuildSupport\Onpoint.Targets"/>
+
+  <PropertyGroup>
+    <ProductName>Infrastructure</ProductName>
+    <ProductDescription>Onpoint Common Infrastructure</ProductDescription>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <MSpecTestItem Include="Infrastructure.Core.Tests"/>
+    <MSpecTestItem Include="Infrastructure.Container.CastleWindsor.Tests"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <NUnitTestItem Include="Infrastructure.Core.Tests"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <BinFiles Include="src\Infrastructure.Core\bin\$(Configuration)\*.*;
+                       src\Infrastructure.Container.CastleWindsor\bin\$(Configuration)\*.*;
+                       src\Infrastructure.Logging.Log4Net\bin\$(Configuration)\*.*;
+                       src\Infrastructure.Logging.NLog\bin\$(Configuration)\*.*"/>
+  </ItemGroup>
+</Project>
