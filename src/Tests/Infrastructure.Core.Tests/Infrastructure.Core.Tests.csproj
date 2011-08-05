@@ -86,7 +86,9 @@
     </None>
     <EmbeddedResource Include="TestData\binaryChilkatMime.mim" />
     <EmbeddedResource Include="TestData\Case16992.mim" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="TestData\mimeMultipart.txt" />

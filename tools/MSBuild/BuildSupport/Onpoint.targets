@@ -19,24 +19,19 @@
 		<TestOutputDir>$(OutputDir)\TestResults</TestOutputDir>
 	</PropertyGroup>
 
-	<!-- General Build Configuration Properties -->
-	<PropertyGroup>
-		<ProductName>[ExampleProductName]</ProductName>
-		<ProductDescription>[Example Description]</ProductDescription>
-		<Configuration>Debug</Configuration>
-		<GenerateDocs>false</GenerateDocs>
-	</PropertyGroup>
-
 	<!-- Version Information -->
 	<PropertyGroup>
-		<AppVersion>0.1.0</AppVersion>
-		<SchemaVersion>0</SchemaVersion>
 		<InTeamCity Condition="'$(build_number)' == ''">false</InTeamCity>
 		<InTeamCity Condition="'$(build_number)' != ''">true</InTeamCity>
 		<BuildNumber Condition="!$(InTeamCity)">0</BuildNumber>
 		<BuildNumber Condition="$(InTeamCity)">$(build_number)</BuildNumber>
-		<CompanyName>Onpoint On Demand</CompanyName>
 	</PropertyGroup>
+
+  <!-- Help -->
+  <PropertyGroup>
+    <HelpProject>$(MSBuildProjectDirectory)\$(ProductName).shfbproj</HelpProject>
+    <HelpTitle>$(ProductDescription)</HelpTitle>
+  </PropertyGroup>
 
 	<!-- Misc -->
 	<PropertyGroup>
@@ -50,8 +45,8 @@
 	<Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets"/>
 	<Import Project="$(SouthSideTasksPath)\SouthSideBuildTasks.MSBuild.Tasks.Targets"/>
 
-	<Target Name="Dist" DependsOnTargets="Clean;InstallPackages;Version;Build;Test;Publish"/>
-  <Target Name="TeamCityBuild" DependsOnTargets="Clean;InstallPackages;Version;Build;BuildMSpecBat"/>
+	<Target Name="Dist" DependsOnTargets="Clean;InstallPackages;Version;Build;Test;Document;Publish"/>
+  <Target Name="TeamCityBuild" DependsOnTargets="Clean;InstallPackages;Version;Build;Test"/>
   <Target Name="TeamCityPublish" DependsOnTargets="Document;Publish"/>
   
 	<Target Name="Clean">
@@ -94,6 +89,17 @@
 					  AssemblyConfiguration="$(Configuration)"
 					  AssemblyCompany="$(CompanyName)"
 					  AssemblyProduct="$(ProductDescription) ($(Configuration) DB: $(SchemaVersion))"/>
+
+    <CallTarget Targets="VersionHelp"/>
+  </Target>
+
+  <Target Name="VersionHelp" Condition="Exists('$(HelpProject)')">
+    <Message Importance="high" Text="VersionHelp: $(HelpProject)"/>
+    <XmlUpdate XmlFileName="$(HelpProject)"
+               Namespace="http://schemas.microsoft.com/developer/msbuild/2003"
+               Prefix="n"
+               XPath="//n:HelpTitle"
+               Value="$(HelpTitle) $(AppVersion).$(BuildNumber)"/>
   </Target>
 
 	<Target Name="Build">
@@ -118,12 +124,12 @@
     <Message Importance="high" Text="Compile Seconds: $(ElapsedSeconds)"/>
   </Target>
 
-	<Target Name="Test">
+	<Target Name="Test" Condition="@(MSpecTestItem) != '' or @(NUnitTestItem) != ''">
 		<Message Importance="high" Text="Test"/>
     <CallTarget Targets="MSpecTests;NUnitTests"/>
 	</Target>
 
-  <Target Name="MSpecTests" Outputs="%(MSpecTestItem.Identity)">
+  <Target Name="MSpecTests" Outputs="%(MSpecTestItem.Identity)" Condition="@(MSpecTestItem) != ''">
     <Message Importance="high" Text="Testing: %(MSpecTestItem.TestDir)\%(MSpecTestItem.Identity)"/>
     <PropertyGroup>
       <TestProjectDir>$(MSBuildProjectDirectory)\src\Tests\%(MSpecTestItem.Identity)</TestProjectDir>
@@ -145,10 +151,10 @@
     <TemplateFile Template="$(MSBuildProjectDirectory)\tools\MSBuild\BuildSupport\mspecTemplate.bat" OutputFileName="$(MSBuildProjectDirectory)\mspec.bat" Tokens="@(Tokens)"/>
     
     <Exec WorkingDirectory="$(TestDir)"
-          Command="$(MsBuildProjectDirectory)\mspec --html $(TestOutputDir)\%(MSpecTestItem.Identity).results.htm %(MSpecTestItem.Identity).dll"/>
+          Command="$(MsBuildProjectDirectory)\mspec --html $(TestOutputDir)\%(MSpecTestItem.Identity).results.htm %(MSpecTestItem.Identity).dll" Condition="!$(InTeamCity)"/>
   </Target>
 
-  <Target Name="NUnitTests" Outputs="%(NUnitTestItem.Identity)">
+  <Target Name="NUnitTests" Outputs="%(NUnitTestItem.Identity)" Condition="@(NUnitTestitem) != ''">
     <PropertyGroup>
       <TestProjectDir>$(MSBuildProjectDirectory)\src\Tests\%(NUnitTestItem.Identity)</TestProjectDir>
       <TestDir>$(TestProjectDir)\bin\$(Configuration)</TestDir>
@@ -167,11 +173,27 @@
           Command='"$(PackageDir)\NUnit.$(NUnitVersion)\tools\nunit-console.exe" %(NUnitTestItem.Identity).dll /xml=$(TestOutputDir)\%(NUnitTestItem.Identity).results.nunit.xml"'/>
   </Target>
 
+  <Target Name="Document" Condition="$(GenerateDocs)">
+    <Message Importance="high" Text="Document"/>
+    <MSBuild Projects="$(HelpProject)" Properties="Configuration=$(Configuration);Platform=AnyCPU"/>
+    <XmlMassUpdate ContentFile="$(HelpDir)\Web.config"
+               NamespaceDefinitions="msb=http://schemas.microsoft.com/developer/msbuild/2003"
+               ContentRoot="configuration"
+               SubstitutionsFile="$(ToolsDir)\MSBuild\BuildSupport\Onpoint.targets.properties"
+               SubstitutionsRoot="/msb:Project/msb:ProjectExtensions/msb:helpWebConfigContent" />
+  </Target>
+
 	<Target Name="Publish">
 		<Message Importance="high" Text="Publish"/>
-    
+
+    <CallTarget Targets="PublishBin"/>
+    <CallTarget Targets="PublishHelp"/>
+	</Target>
+
+  <Target Name="PublishBin" Condition="@(BinFiles) != ''">
+    <Message Importance="high" Text="PublishBin"/>
     <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(BinDir)"/>
-    
+
     <ItemGroup>
       <ZipFiles Include="$(BinDir)\**\*.*"/>
     </ItemGroup>
@@ -179,5 +201,14 @@
       <ZipFileName>$(DistributionDir)\$(ProductName)$(ZipQualifier)</ZipFileName>
     </PropertyGroup>
     <Zip Files="@(ZipFiles)" WorkingDirectory="$(BinDir)" ZipFileName="$(ZipFileName)"/>
-	</Target>
+  </Target>
+
+  <Target Name="PublishHelp" Condition="$(GenerateDocs) and $(PublicWebHelpDir) != ''">
+    <Message Importance="high" Text="PublishHelp"/>
+    <ItemGroup>
+      <HelpFiles Include="$(HelpDir)\**\*.*"/>
+    </ItemGroup>
+    <RemoveDir Directories="$(PublicWebHelpDir)" ContinueOnError="true"/>
+    <Copy SourceFiles="@(HelpFiles)" DestinationFolder="$(PublicWebHelpDir)\%(RecursiveDir)"/>
+  </Target>
 </Project>
