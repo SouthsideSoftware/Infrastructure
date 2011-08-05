@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Onpoint.Infrastructure</id>
+    <title>Onpoint Infrastructure</title>
+    <version>0.1.0.0</version>
+    <authors>Onpoint On Demand</authors>
+    <owners>Onpoint On Demand</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Generic support for IOC/DI, logging, data etc.
+	  
+	  See tools\OptionDlls for optional dlls related to 
+	  log4net, testing and data support.
+    </description>
+    <summary>Onpoint Infrastructure for .NET Projects (Debug)</summary>
+    <dependencies>
+      <dependency id="NLog" version="2.0.0.2000" />
+      <dependency id="Castle.Core" version="2.5.2" />
+      <dependency id="Castle.Windsor" version="2.5.3" />
+    </dependencies>
+    <tags>onpoint</tags>
+  </metadata>
+  <files>
+    <file src="BuildOutput\bin\Infrastructure.Core.dll" target="lib" />
+    <file src="BuildOutput\bin\Infrastructure.Container.CastleWindsor.dll" target="lib" />
+    <file src="BuildOutput\bin\Infrastructure.Logging.NLog.dll" target="lib" />
+    <file src="BuildOutput\bin\Infrastructure.Logging.log4net.dll" target="tools\optionDlls" />
+    <file src="BuildOutput\bin\Infrastructure.Testing.dll" target="tools\optionDlls" />
+    <file src="BuildOutput\bin\Infrastructure.Data.dll" target="tools\optionDlls" />
+  </files>
+</package>

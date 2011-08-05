@@ -3,26 +3,44 @@
   <!-- See https://onpointondemand.fogbugz.com/default.asp?W695 for documentation -->
   <Import Project="$(MSBuildProjectDirectory)\Tools\MSBuild\BuildSupport\Onpoint.Targets.properties"/>
 
+  <!-- Version Information -->
+  <PropertyGroup>
+    <AppVersion>0.1.0</AppVersion>
+    <SchemaVersion>0</SchemaVersion>
+  </PropertyGroup>
+
+  <!-- Project name and description -->
   <PropertyGroup>
     <ProductName>Infrastructure</ProductName>
     <ProductDescription>Onpoint Common Infrastructure</ProductDescription>
   </PropertyGroup>
 
+  <!-- MSpec Tests -->
   <ItemGroup>
     <MSpecTestItem Include="Infrastructure.Core.Tests"/>
     <MSpecTestItem Include="Infrastructure.Container.CastleWindsor.Tests"/>
   </ItemGroup>
 
+  <!-- NUnit Tests -->
   <ItemGroup>
     <NUnitTestItem Include="Infrastructure.Core.Tests"/>
   </ItemGroup>
 
+  <!-- Binary files to publish -->
   <ItemGroup>
     <BinFiles Include="src\Infrastructure.Core\bin\$(Configuration)\*.*;
                        src\Infrastructure.Container.CastleWindsor\bin\$(Configuration)\*.*;
                        src\Infrastructure.Logging.Log4Net\bin\$(Configuration)\*.*;
-                       src\Infrastructure.Logging.NLog\bin\$(Configuration)\*.*"/>
+                       src\Infrastructure.Logging.NLog\bin\$(Configuration)\*.*;
+                       src\Infrastructure.Testing\bin\$(Configuration)\*.*;
+                       src\Infrastructure.Data\bin\$(Configuration)\*.*"/>
   </ItemGroup>
+
+  <!-- Nuget -->
+  <PropertyGroup>
+    <NugetPackageSummary>Onpoint Infrastructure for .NET Projects</NugetPackageSummary>
+    <NugetPackageId>Onpoint.Infrastructure</NugetPackageId>
+  </PropertyGroup>
 
   <Import Project="$(MSBuildProjectDirectory)\Tools\MSBuild\BuildSupport\Onpoint.Targets"/>
 </Project>
