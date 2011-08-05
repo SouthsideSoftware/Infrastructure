@@ -32,6 +32,7 @@
   <PropertyGroup>
     <HelpProject>$(MSBuildProjectDirectory)\$(ProductName).shfbproj</HelpProject>
     <HelpTitle>$(ProductDescription)</HelpTitle>
+    <PublicWebHelpDir>D:\ApiDocumentation\$(ProductName)</PublicWebHelpDir>
   </PropertyGroup>
 
 	<!-- Misc -->
@@ -67,7 +68,8 @@
     <Message Importance="high" Text="Uses Help" Condition = "Exists('$(HelpProject)')"/>
     <Message Importance="high" Text="Uses Nuget" Condition = "Exists('$(NugetPackageSpecFile)')"/>
     <Message Importance="high" Text="GenerateDocs = $(GenerateDocs)"/>
-    <Message Importance="high" Text="PublishWebHelpDir = $(PublishWebHelpDir)"/>
+    <Message Importance="high" Text="PublishWebHelp = $(PublishWebHelp)"/>
+    <Message Importance="high" Text="PublicWebHelpDir = $(PublicWebHelpDir)"/>
     <Message Importance="high" Text="PublishNugetPackage = $(PublishNugetPackage)"/>
     <Message Importance="high" Text="PublishNugetDestination = $(NugetPushUrl)"/>
 		<Message Importance="high" Text="======================================================="/>
@@ -239,7 +241,7 @@
     <Zip Files="@(ZipFiles)" WorkingDirectory="$(BinDir)" ZipFileName="$(ZipFileName)"/>
   </Target>
 
-  <Target Name="PublishHelp" Condition="$(GenerateDocs) and $(PublicWebHelpDir) != ''">
+  <Target Name="PublishHelp" Condition="$(GenerateDocs) and $(PublishWebHelp)">
     <Message Importance="high" Text="PublishHelp"/>
     <ItemGroup>
       <HelpFiles Include="$(HelpDir)\**\*.*"/>
