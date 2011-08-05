@@ -59,10 +59,17 @@
 	<Target Name="Clean">
     <Message Importance="high" Text="Clean"/>
 		<Message Importance="high" Text="======================================================="/>
-		<Message Importance="high" Text="Configuration = $(Configuration)"/>
+    <Message Importance="high" Text="Configuration = $(Configuration)"/>
 		<Message Importance="high" Text="Version = $(AppVersion).$(BuildNumber)"/>
     <Message Importance="high" Text="DB = $(SchemaVersion)"/>
     <Message Importance="high" Text="MSBuild Path: $(MSBuildBinPath)"/>
+    <Message Importance="high" Text="-------------------------------------------------------"/>
+    <Message Importance="high" Text="Uses Help" Condition = "Exists('$(HelpProject)')"/>
+    <Message Importance="high" Text="Uses Nuget" Condition = "Exists('$(NugetPackageSpecFile)')"/>
+    <Message Importance="high" Text="GenerateDocs = $(GenerateDocs)"/>
+    <Message Importance="high" Text="PublishWebHelpDir = $(PublishWebHelpDir)"/>
+    <Message Importance="high" Text="PublishNugetPackage = $(PublishNugetPackage)"/>
+    <Message Importance="high" Text="PublishNugetDestination = $(NugetPushUrl)"/>
 		<Message Importance="high" Text="======================================================="/>
     <RemoveDir Directories="$(OutputDir)" ContinueOnError="true"/>
 		<MakeDir Directories="$(OutputDir)"/>
