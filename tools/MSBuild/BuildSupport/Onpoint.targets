@@ -270,7 +270,7 @@
 
   <Target Name="PublishNugetPackage" Condition="$(PublishNugetPackage)">
     <Message Importance="high" Text="Publish packages $(NugetPackageName)"/>
-    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push -source $(NugetPushUrl) $(NugetPackageId).$(AppVersion).$(BuildNumber).nupkg 55312497-4441-41df-a355-84f42fa2ca0d"/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push -source $(NugetPushUrl) $(NugetPackageId).$(AppVersion).$(BuildNumber).nupkg"/>
   </Target>
   
 </Project>
