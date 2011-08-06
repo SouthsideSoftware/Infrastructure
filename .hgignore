@@ -38,3 +38,4 @@ relre:/*.ReSharper
 *_tcabanski
 packages/*/*
 *.csproj.vs10x
+mspec.bat
