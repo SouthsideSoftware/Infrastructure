@@ -7,6 +7,12 @@ namespace Infrastructure.Testing {
     /// </summary>
     public static class ExtensionMethodsAndHelpers {
 
+        /// <summary>
+        /// Returns true if the both streams contain the same bytes.
+        /// </summary>
+        /// <param name="one"></param>
+        /// <param name="two"></param>
+        /// <returns></returns>
         public static bool SameBytes(this Stream one, Stream two) {
 
             if (one.Length != two.Length) {
