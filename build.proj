@@ -27,15 +27,6 @@
   </ItemGroup>
 
   <!-- Binary files to publish -->
-  <ItemGroup>
-    <BinFiles Include="src\Infrastructure.Core\bin\$(Configuration)\*.*;
-                       src\Infrastructure.Container.CastleWindsor\bin\$(Configuration)\*.*;
-                       src\Infrastructure.Logging.Log4Net\bin\$(Configuration)\*.*;
-                       src\Infrastructure.Logging.NLog\bin\$(Configuration)\*.*;
-                       src\Infrastructure.Testing\bin\$(Configuration)\*.*;
-                       src\Infrastructure.Data\bin\$(Configuration)\*.*"/>
-  </ItemGroup>
-
   <PropertyGroup>
     <BinInclude>
       src\Infrastructure.Core\bin\$(Configuration)\*.*;
