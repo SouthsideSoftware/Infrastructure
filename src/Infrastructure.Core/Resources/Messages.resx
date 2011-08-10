@@ -201,4 +201,10 @@
   <data name="DirectoryAndFileHelper_SaveStreamToFile_ErrorRenamingFileFromTempFile" xml:space="preserve">
     <value>Error during rename of temp file from {0} to {1}</value>
   </data>
+  <data name="Configuration_RunComponentInstallers_CouldNotLoadTypesFromAssembly">
+    <value xml:space="preserve">Failed to load types from assembly {0}.  Details will follow this message.  The exception is {1}</value>
+  </data>
+  <data name="Configuration_RunComponentInstallers_LoaderError">
+    <value xml:space="preserve">	Loader Error: {0}</value>
+  </data>
 </root>

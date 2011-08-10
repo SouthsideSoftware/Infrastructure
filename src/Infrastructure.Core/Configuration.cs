@@ -3,6 +3,7 @@ using System.Reflection;
 using Infrastructure.Core.CodeContracts;
 using Infrastructure.Core.Container;
 using Infrastructure.Core.Logging;
+using Infrastructure.Core.Resources;
 
 namespace Infrastructure.Core {
     /// <summary>
@@ -88,19 +89,21 @@ namespace Infrastructure.Core {
         void RunComponentInstallers() {
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies()) {
                 try {
-                    foreach (Type t in assembly.GetTypes()) {
-                        if (typeof(IComponentInstaller).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract &&
-                            t.IsPublic) {
-                            (Activator.CreateInstance(t) as IComponentInstaller).Install(serviceLocator);
+                    if (!assembly.FullName.Contains("ReSharper")) {
+                        foreach (Type t in assembly.GetTypes()) {
+                            if (typeof(IComponentInstaller).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract &&
+                                t.IsPublic) {
+                                (Activator.CreateInstance(t) as IComponentInstaller).Install(serviceLocator);
+                            }
                         }
                     }
                 }
                 catch (ReflectionTypeLoadException tle) {
                     Logger.ErrorFormat(
-                        "Failed to load types from assembly {0}.  Details will follow this message.  The exception is {1}",
+                        Messages.Configuration_RunComponentInstallers_CouldNotLoadTypesFromAssembly,
                         assembly.FullName, tle);
                     foreach (Exception e in tle.LoaderExceptions) {
-                        Logger.ErrorFormat("\tLoader Error: {0}", e.Message);
+                        Logger.ErrorFormat(Messages.Configuration_RunComponentInstallers_LoaderError, e.Message);
                     }
                 }
             }
