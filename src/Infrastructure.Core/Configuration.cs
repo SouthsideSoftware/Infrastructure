@@ -22,7 +22,9 @@ namespace Infrastructure.Core {
         /// Gets the settings instance.
         /// </summary>
         public static Configuration Settings {
-            get { return settings; }
+            get {
+                return settings;
+            }
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace Infrastructure.Core {
         static ILog Logger {
             get {
                 if (logger == null) {
-                    logger = LogManager.GetLogger(typeof (Configuration));
+                    logger = LogManager.GetLogger(typeof(Configuration));
                 }
                 return logger;
             }
@@ -43,13 +45,18 @@ namespace Infrastructure.Core {
         /// Gets the service locator configured.
         /// </summary>
         public IServiceLocator ServiceLocator {
-            get { return serviceLocator; }
+            get {
+                return serviceLocator;
+            }
         }
 
         /// <summary>
         /// Gets the configured log provider.
         /// </summary>
-        internal ILogProvider LogProvider { get; private set; }
+        internal ILogProvider LogProvider {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Assigns the service locator builder.
@@ -75,6 +82,28 @@ namespace Infrastructure.Core {
         /// </summary>
         public void Configure() {
             LogInitializer.Initialize();
+            RunComponentInstallers();
+        }
+
+        void RunComponentInstallers() {
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies()) {
+                try {
+                    foreach (Type t in assembly.GetTypes()) {
+                        if (typeof(IComponentInstaller).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract &&
+                            t.IsPublic) {
+                            (Activator.CreateInstance(t) as IComponentInstaller).Install(serviceLocator);
+                        }
+                    }
+                }
+                catch (ReflectionTypeLoadException tle) {
+                    Logger.ErrorFormat(
+                        "Failed to load types from assembly {0}.  Details will follow this message.  The exception is {1}",
+                        assembly.FullName, tle);
+                    foreach (Exception e in tle.LoaderExceptions) {
+                        Logger.ErrorFormat("\tLoader Error: {0}", e.Message);
+                    }
+                }
+            }
         }
     }
 }
