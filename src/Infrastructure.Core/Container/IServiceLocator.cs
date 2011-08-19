@@ -93,7 +93,7 @@ namespace Infrastructure.Core.Container
         /// <summary>
         /// Clear all components from the container.
         /// </summary>
-        void Reset();
+        void Clear();
 
         /// <summary>
         /// Register remaining interface implementations as singletons

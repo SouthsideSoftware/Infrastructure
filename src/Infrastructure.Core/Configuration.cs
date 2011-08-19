@@ -86,7 +86,16 @@ namespace Infrastructure.Core {
             RunComponentInstallers();
         }
 
-        void RunComponentInstallers() {
+        /// <summary>
+        /// Clears the service locator configuration and re-runs the component installers.
+        /// </summary>
+        public void ResetServiceLocator()
+        {
+            serviceLocator.Clear();
+            RunComponentInstallers();
+        }
+
+        internal void RunComponentInstallers() {
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies()) {
                 try {
                     if (!assembly.FullName.Contains("ReSharper")) {

@@ -212,9 +212,9 @@ namespace Infrastructure.Container.CastleWindsor
         }
 
         /// <summary>
-        /// Resets the container.
+        /// Clears the container.
         /// </summary>
-        public void Reset() {
+        public void Clear() {
             container.Dispose();
             container = new WindsorContainer();
             InitializeContainerSettings();
