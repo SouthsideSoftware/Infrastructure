@@ -55,7 +55,7 @@ namespace Infrastructure.Container.CastleWindsor
         }
 
         /// <summary>
-        /// Get the default instance of the given type.
+        /// Get the default instance of the given service type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -65,7 +65,7 @@ namespace Infrastructure.Container.CastleWindsor
         }
 
         /// <summary>
-        /// Get the default instance of the given type
+        /// Get the default instance of the given service type
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -75,7 +75,7 @@ namespace Infrastructure.Container.CastleWindsor
         }
 
         /// <summary>
-        /// Get the instance of the given type with the given key.
+        /// Get the instance of the given service type with the given key.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -85,7 +85,7 @@ namespace Infrastructure.Container.CastleWindsor
         }
 
         /// <summary>
-        /// Get the instance of the given type with the given key.
+        /// Get the instance of the given service type with the given key.
         /// </summary>
         /// <param name="type"></param>
         /// <param name="key"></param>
@@ -96,12 +96,13 @@ namespace Infrastructure.Container.CastleWindsor
         }
 
         /// <summary>
-        /// Returns true if the given type can be resolved.
+        /// Returns true if the given service type can be resolved.
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public bool CanResolve(Type type) {
-            return container.Kernel.HasComponent(type.Name);
+        public bool CanResolve(Type type)
+        {
+            return container.Kernel.GetAssignableHandlers(type).Length > 0;
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace Infrastructure.Container.CastleWindsor
         }
 
         /// <summary>
-        /// Resolve all components of the given type.
+        /// Resolve all components of the given service type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>

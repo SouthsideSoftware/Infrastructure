@@ -10,25 +10,25 @@ namespace Infrastructure.Core.Container
     public interface IServiceLocator
     {
         /// <summary>
-        /// Get the default instance of the given type.
+        /// Get the default instance of the given service type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         T Resolve<T>();
         /// <summary>
-        /// Get the default instance of the given type
+        /// Get the default instance of the given service type
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
         object Resolve(Type type);
         /// <summary>
-        /// Get the instance of the given type with the given key.
+        /// Get the instance of the given service type with the given key.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         T Resolve<T>(string key);
         /// <summary>
-        /// Get the instance of the given type with the given key.
+        /// Get the instance of the given service type with the given key.
         /// </summary>
         /// <param name="type"></param>
         /// <param name="key"></param>
@@ -41,20 +41,20 @@ namespace Infrastructure.Core.Container
         /// <returns></returns>
         bool CanResolve(Type type);
         /// <summary>
-        /// Returns true if a component with the given type and key can be resolved.
+        /// Returns true if a component with the given service type and key can be resolved.
         /// </summary>
         /// <param name="type"></param>
         /// <param name="key"></param>
         /// <returns></returns>
         bool CanResolve(Type type, string key);
         /// <summary>
-        /// Resolve all components of the given type.
+        /// Resolve all components of the given service type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         IEnumerable<T> ResolveAll<T>();
         /// <summary>
-        /// Get the handlers for the given type.
+        /// Get the handlers for the given service type.
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
