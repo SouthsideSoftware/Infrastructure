@@ -15,7 +15,7 @@ namespace Infrastructure.Core.Mime
 	/// and is ignored and stripped from the header value.
 	/// </remarks>
 	public class MimeHeaderParam : MimeHeaderBase {
-	    static ILog logger = LogManager.GetLogger(typeof (MimeHeaderParam));
+	    ILog logger = LogManager.GetLogger(typeof (MimeHeaderParam));
 		private int _section = -1;
 		private string _charset = "";
 		private string _language = "";

@@ -9,7 +9,7 @@ namespace Infrastructure.Core.Mime
 	/// Summary description for MimeStreamReader.
 	/// </summary>
 	public class MimeStreamReader {
-	    static ILog logger = LogManager.GetLogger(typeof (MimeStreamReader));
+	    ILog logger = LogManager.GetLogger(typeof (MimeStreamReader));
 		private Stream _stream;
 		private char _lastChar;
 

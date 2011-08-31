@@ -12,7 +12,7 @@ namespace Infrastructure.Core.Mime
 	public class MimeHeader : MimeHeaderBase
 	{
 		private MimeHeaderParamCollection _parameters = new MimeHeaderParamCollection();
-	    static ILog logger = LogManager.GetLogger(typeof (MimeHeaderBase));
+	    ILog logger = LogManager.GetLogger(typeof (MimeHeaderBase));
 
 		/// <summary>
 		/// Construct a mime header from a line.  

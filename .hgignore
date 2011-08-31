@@ -34,7 +34,6 @@ zzz_*
 Files/temp/**
 _[Bb]ackup*/*
 _[Uu]pgrade*/*
-relre:/*.ReSharper
 *_tcabanski
 packages/*/*
 *.csproj.vs10x

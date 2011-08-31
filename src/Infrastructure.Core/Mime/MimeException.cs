@@ -11,7 +11,6 @@ namespace Infrastructure.Core.Mime
 	/// </exception> 
 	[Serializable]
 	public class MimeException : Exception {
-	    static ILog logger = LogManager.GetLogger(typeof (MimeException));
 		/// <summary>
 		/// Constructor.
 		/// </summary>

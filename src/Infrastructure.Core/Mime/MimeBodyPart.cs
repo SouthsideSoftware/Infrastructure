@@ -10,7 +10,7 @@ namespace Infrastructure.Core.Mime
 	/// The body of a mime message.  
 	/// </summary>
 	public abstract class MimeBodyPart {
-	    static ILog logger = LogManager.GetLogger(typeof (MimeBodyPart));
+	    ILog logger = LogManager.GetLogger(typeof (MimeBodyPart));
 		/// <summary>
 		/// The mime type of the part content.
 		/// </summary>

@@ -7,14 +7,13 @@ namespace Infrastructure.Core.Logging
     /// logger.
     /// </summary>
     public class NullLogProvider : ILogProvider {
-        static ILog log = new NullLog();
         /// <summary>
         /// Gets the ILog implementation for the type.
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
         public ILog GetLogger(Type type) {
-            return log;
+            return new NullLog(type.FullName);
         }
 
         /// <summary>
@@ -23,7 +22,7 @@ namespace Infrastructure.Core.Logging
         /// <param name="key"></param>
         /// <returns></returns>
         public ILog GetLogger(string key) {
-            throw new NotImplementedException();
+            return new NullLog(key);
         }
     }
 }

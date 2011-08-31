@@ -23,6 +23,15 @@ namespace Infrastructure.Logging.Log4Net
         }
 
         /// <summary>
+        /// Gets the name of the logger.
+        /// </summary>
+        public string Name {
+            get {
+                return log4NetLog.Logger.Name;
+            }
+        }
+
+        /// <summary>
         /// Gets <see langword="true"/> if error logging is enabled.
         /// </summary>
         public bool IsErrorEnabled {

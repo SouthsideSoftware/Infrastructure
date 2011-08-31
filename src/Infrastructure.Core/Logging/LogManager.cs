@@ -5,10 +5,8 @@ namespace Infrastructure.Core.Logging {
     /// Log manager.
     /// </summary>
     public static class LogManager {
-        static ILogProvider logProvider;
-
         static ILogProvider LogProvider {
-            get { return logProvider ?? (logProvider = Configuration.Settings.LogProvider); }
+            get { return Configuration.Settings.LogProvider; }
         }
 
         /// <summary>

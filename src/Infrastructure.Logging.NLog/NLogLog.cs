@@ -20,6 +20,15 @@ namespace Infrastructure.Logging.NLog
         }
 
         /// <summary>
+        /// Gets the name of the logger.
+        /// </summary>
+        public string Name {
+            get {
+                return logger.Name;
+            }
+        }
+
+        /// <summary>
         /// Gets <see langword="true"/> if error logging is enabled.
         /// </summary>
         public bool IsErrorEnabled {

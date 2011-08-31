@@ -13,7 +13,7 @@ namespace Infrastructure.Core.Mime
 	{
 		private HybridDictionary _headers = new HybridDictionary();
 		private ArrayList _listHeaders = new ArrayList();
-	    static ILog logger = LogManager.GetLogger(typeof (MimeHeaderParamCollection));
+	    ILog logger = LogManager.GetLogger(typeof (MimeHeaderParamCollection));
 
 		/// <summary>
 		/// Constructor.

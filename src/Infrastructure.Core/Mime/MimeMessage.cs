@@ -11,7 +11,7 @@ namespace Infrastructure.Core.Mime
 	/// body.
 	/// </summary>
 	public class MimeMessage {
-	    static ILog logger = LogManager.GetLogger(typeof (MimeMessage));
+	    ILog logger = LogManager.GetLogger(typeof (MimeMessage));
 		private MimeHeaderCollection _headers = new MimeHeaderCollection();
 		private MimeBodyPart _body = null;
 

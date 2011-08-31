@@ -10,7 +10,7 @@ namespace Infrastructure.Core {
     /// Configuration of commons
     /// </summary>
     public class Configuration {
-        static ILog logger;
+        ILog logger;
         static readonly Configuration settings = new Configuration();
 
         IServiceLocator serviceLocator;
@@ -33,7 +33,7 @@ namespace Infrastructure.Core {
         /// the log provider is initialized by configuration.  Otherwise, you will always get 
         /// the null logger provider.
         /// </summary>
-        static ILog Logger {
+        ILog Logger {
             get {
                 if (logger == null) {
                     logger = LogManager.GetLogger(typeof(Configuration));

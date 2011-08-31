@@ -8,6 +8,12 @@ namespace Infrastructure.Core.Logging
     public interface ILog
     {
         /// <summary>
+        /// Gets the name of the logger.
+        /// </summary>
+        string Name {
+            get;
+        }
+        /// <summary>
         /// Gets <see langword="true"/> if error logging is enabled.
         /// </summary>
         bool IsErrorEnabled { get; }

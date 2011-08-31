@@ -11,7 +11,7 @@ namespace Infrastructure.Core.Mime
 	/// Parses a mime message stream.
 	/// </summary>
 	public class MimeParser {
-	    static ILog logger = LogManager.GetLogger(typeof (MimeParser));
+	    ILog logger = LogManager.GetLogger(typeof (MimeParser));
 		/// <summary>
 		/// The type of thing returned by Read routines
 		/// </summary>

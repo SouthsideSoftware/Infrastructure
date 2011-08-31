@@ -36,7 +36,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DocumentationFile>bin\Release\Infrastructure.Core.XML</DocumentationFile>
   </PropertyGroup>
-    <PropertyGroup>
+  <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
@@ -68,6 +68,7 @@
     <Compile Include="Logging\LogManager.cs" />
     <Compile Include="Logging\NullLog.cs" />
     <Compile Include="Logging\NullLogProvider.cs" />
+    <Compile Include="Logging\StubLog.cs" />
     <Compile Include="Mime\Mime.cs" />
     <Compile Include="Mime\MimeBasicPart.cs" />
     <Compile Include="Mime\MimeBodyPart.cs" />

@@ -13,7 +13,7 @@ namespace Infrastructure.Core.Mime
 	/// Chilkat Mime doesn't support Mono but this Mime will.
 	/// </summary>
 	public class Mime : IDisposable {
-	    static ILog logger = LogManager.GetLogger(typeof (Mime));
+	    ILog logger = LogManager.GetLogger(typeof (Mime));
 		/// <summary>
 		/// Mime header
 		/// </summary>
