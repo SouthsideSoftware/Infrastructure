@@ -88,6 +88,15 @@ namespace Infrastructure.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed trying to root path and ensure that the folder exists for file path {0}.
+        /// </summary>
+        public static string DirectoryAndFileHelper_RootPathAndEnsureFolderExists_ErrorCreatingDirectory {
+            get {
+                return ResourceManager.GetString("DirectoryAndFileHelper_RootPathAndEnsureFolderExists_ErrorCreatingDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The destination file already exists and could not be deleted &apos;{0}&apos;.
         /// </summary>
         public static string DirectoryAndFileHelper_SaveStreamToFile_CouldNotDeleteExistingFile {

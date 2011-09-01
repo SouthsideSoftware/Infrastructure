@@ -48,6 +48,32 @@ namespace Infrastructure.Core.Helpers {
         }
 
         /// <summary>
+        /// Given a file path, creates the necessary directory.  If the file path is not rooted, 
+        /// it is made into a rooted path based on the application's bin directory.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="logger"></param>
+        /// <returns></returns>
+        public static string RootPathAndEnsureFolderExists(string filePath, ILog logger = null) {
+            ParameterCheck.StringRequiredAndNotWhitespace(filePath, "filePath");
+
+            try {
+                if (!Path.IsPathRooted((filePath))) {
+                    filePath = Path.Combine(ApplicationInformation.Directory, filePath);
+                }
+                var dir = Path.GetDirectoryName(filePath);
+                if (!Directory.Exists(dir)) {
+                    Directory.CreateDirectory(dir);
+                }
+            } catch (Exception ex) {
+                var log = logger ?? DirectoryAndFileHelper.logger;
+                    log.Error(string.Format(Messages.DirectoryAndFileHelper_RootPathAndEnsureFolderExists_ErrorCreatingDirectory, filePath), ex);
+                    throw;
+            }
+            return filePath;
+        }
+
+        /// <summary>
         /// Save a stream of information to a File
         /// </summary>
         /// <remarks>

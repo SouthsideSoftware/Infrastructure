@@ -207,4 +207,7 @@
   <data name="Configuration_RunComponentInstallers_LoaderError">
     <value xml:space="preserve">	Loader Error: {0}</value>
   </data>
+  <data name="DirectoryAndFileHelper_RootPathAndEnsureFolderExists_ErrorCreatingDirectory">
+    <value xml:space="preserve">Failed trying to root path and ensure that the folder exists for file path {0}</value>
+  </data>
 </root>

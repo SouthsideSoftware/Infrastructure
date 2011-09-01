@@ -102,6 +102,7 @@ namespace Infrastructure.Core {
                         foreach (Type t in assembly.GetTypes()) {
                             if (typeof(IComponentInstaller).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract &&
                                 t.IsPublic) {
+                                Logger.DebugFormat("Running component installer for {0}", assembly.FullName);
                                 (Activator.CreateInstance(t) as IComponentInstaller).Install(serviceLocator);
                             }
                         }

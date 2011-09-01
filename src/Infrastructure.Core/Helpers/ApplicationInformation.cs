@@ -83,7 +83,7 @@ namespace Infrastructure.Core.Helpers
         public static string FileVersion { get { return fileVersion; } }
 
         /// <summary>
-        /// Gets the application directory.
+        /// Gets the application bin directory.
         /// </summary>
         public static string Directory { get { return AppDomain.CurrentDomain.SetupInformation.ApplicationBase; } }
 
