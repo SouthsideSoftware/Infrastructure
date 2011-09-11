@@ -5,6 +5,7 @@ using System.Text;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Context;
+using Castle.MicroKernel.Lifestyle;
 
 namespace Infrastructure.Container.CastleWindsor
 {
@@ -12,29 +13,14 @@ namespace Infrastructure.Container.CastleWindsor
     /// A transient that is not tracked by the castle windsor container.
     /// </summary>
     [Serializable]
-    public class NonTrackedTransientLifestyle : ILifestyleManager
+    public class NonTrackedTransientLifestyle : AbstractLifestyleManager
     {
-        private IComponentActivator componentActivator;
-
         /// <summary>
-        /// Initalize the activator.
+        /// Invoked when the container gets disposed. The container will not call it multiple times in multithreaded environments.
+        ///               However it may be called at the same time when some out of band release mechanism is in progress. Resolving those potential
+        ///               issues is the task of implementors
         /// </summary>
-        /// <param name="componentActivator"></param>
-        /// <param name="kernel"></param>
-        /// <param name="model"></param>
-        public void Init(IComponentActivator componentActivator, IKernel kernel, ComponentModel model)
-        {
-            this.componentActivator = componentActivator;
-        }
-
-        /// <summary>
-        /// Resolve.
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        public object Resolve(CreationContext context)
-        {
-            return componentActivator.Create(context);
+        public override void Dispose() {
         }
 
         /// <summary>
@@ -42,18 +28,12 @@ namespace Infrastructure.Container.CastleWindsor
         /// </summary>
         /// <param name="instance"></param>
         /// <returns></returns>
-        public bool Release(object instance)
+        public override bool Release(object instance)
         {
             return true;
         }
 
-        /// <summary>
-        /// Dispose.
-        /// </summary>
-        public void Dispose()
-        {
-
-        }
+   
 
     }
 }

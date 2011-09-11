@@ -10,6 +10,7 @@ using Infrastructure.Core.CodeContracts;
 using Infrastructure.Core.Container;
 using Infrastructure.Core.Helpers;
 using Infrastructure.Core.Logging;
+using System.Linq;
 
 namespace Infrastructure.Container.CastleWindsor
 {
@@ -112,7 +113,7 @@ namespace Infrastructure.Container.CastleWindsor
         /// <param name="key"></param>
         /// <returns></returns>
         public bool CanResolve(Type type, string key) {
-            return container.Kernel.HasComponent(key) && container.Kernel.GetHandler(key).ComponentModel.Service.Name == type.Name;
+            return container.Kernel.HasComponent(key) && container.Kernel.GetHandler(key).ComponentModel.Services.Contains(type);
         }
 
         /// <summary>

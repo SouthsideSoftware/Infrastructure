@@ -1,18 +1,17 @@
 ﻿using Infrastructure.Logging.NLog;
 using Machine.Specifications;
 
-namespace Infrastructure.Core.Tests {
+namespace Infrastructure.Container.CastleWindsor.Tests {
     public class AssemblyContext : IAssemblyContext, ICleanupAfterEveryContextInAssembly {
-        static bool isInitalized;
+        #region IAssemblyContext Members
 
         public void OnAssemblyStart() {
-            if (!isInitalized) {
-                Infrastructure.Core.Configuration.Settings.LogWithNLog().Configure();
-                isInitalized = true;
-            }
+            Infrastructure.Core.Configuration.Settings.LogWithNLog().Configure();
         }
 
         public void OnAssemblyComplete() {}
+
+        #endregion
 
         public void AfterContextCleanup() {
         }

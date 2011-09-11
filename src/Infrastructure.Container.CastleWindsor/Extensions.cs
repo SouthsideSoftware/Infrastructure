@@ -136,12 +136,14 @@ namespace Infrastructure.Container.CastleWindsor
                              INamingSubSystem;
                 sb.AppendFormat("\n\t{0,-120}{1, -50}{2,-15}{3}\n", "KEY", "INTERFACE", "LIFESTYLE", "CLASS");
 
-                List<string> components =
-                    naming.GetHandlers().Select(
-                        handler =>
-                        string.Format("\t{0,-120}{1,-50}{2,-15}{3}\n", handler.ComponentModel.Name, handler.Service.Name,
+                var components = new List<string>();
+                foreach (var handler in naming.GetAllHandlers()) {
+                    foreach (var service in handler.ComponentModel.Services) {
+                        components.Add(string.Format("\t{0,-120}{1,-50}{2,-15}{3}\n", handler.ComponentModel.Name, service.Name,
                                       handler.ComponentModel.LifestyleType,
-                                      handler.ComponentModel.Implementation.FullName)).ToList();
+                                      handler.ComponentModel.Implementation.FullName));
+                    }
+                }
                 components.Sort();
                 components.ForEach(c => sb.Append(c));
                 sb.Append("****************************************************");
@@ -159,8 +161,7 @@ namespace Infrastructure.Container.CastleWindsor
         {
             var naming = container.Kernel.GetSubSystem(SubSystemConstants.NamingKey) as
                          INamingSubSystem;
-            return (from handler in naming.GetHandlers()
-                    where handler.Service == typeof (T)
+            return (from handler in naming.GetHandlers(typeof(T))
                     orderby handler.ComponentModel.Implementation.FullName
                     select handler.ComponentModel.Implementation.FullName).ToList();
         }
