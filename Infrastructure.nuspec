@@ -16,8 +16,8 @@
     <summary>Onpoint Infrastructure for .NET Projects (Debug)</summary>
     <dependencies>
       <dependency id="NLog" version="2.0.0.2000" />
-      <dependency id="Castle.Core" version="2.5.2" />
-      <dependency id="Castle.Windsor" version="2.5.3" />
+      <dependency id="Castle.Core" version="3.0.0.2001" />
+      <dependency id="Castle.Windsor" version="3.0.0.2001" />
     </dependencies>
     <tags>onpoint</tags>
   </metadata>
