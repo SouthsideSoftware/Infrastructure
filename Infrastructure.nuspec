@@ -22,15 +22,15 @@
     <tags>onpoint</tags>
   </metadata>
   <files>
-    <file src="BuildOutput\bin\Infrastructure.Core.dll" target="lib" />
-    <file src="BuildOutput\bin\Infrastructure.Container.CastleWindsor.dll" target="lib" />
-    <file src="BuildOutput\bin\Infrastructure.Logging.NLog.dll" target="lib" />
+    <file src="BuildOutput\bin\Infrastructure.Core.dll" target="lib\net40-full" />
+    <file src="BuildOutput\bin\Infrastructure.Container.CastleWindsor.dll" target="lib\net40-full" />
+    <file src="BuildOutput\bin\Infrastructure.Logging.NLog.dll" target="lib\net40-full" />
     <file src="BuildOutput\bin\Infrastructure.Logging.log4net.dll" target="tools\optionDlls" />
     <file src="BuildOutput\bin\Infrastructure.Testing.dll" target="tools\optionDlls" />
     <file src="BuildOutput\bin\Infrastructure.Data.dll" target="tools\optionDlls" />
-    <file src="BuildOutput\bin\Infrastructure.Core.pdb" target="lib" />
-    <file src="BuildOutput\bin\Infrastructure.Container.CastleWindsor.pdb" target="lib" />
-    <file src="BuildOutput\bin\Infrastructure.Logging.NLog.pdb" target="lib" />
+    <file src="BuildOutput\bin\Infrastructure.Core.pdb" target="lib\net40-full" />
+    <file src="BuildOutput\bin\Infrastructure.Container.CastleWindsor.pdb" target="lib\net40-full" />
+    <file src="BuildOutput\bin\Infrastructure.Logging.NLog.pdb" target="lib\net40-full" />
     <file src="BuildOutput\bin\Infrastructure.Logging.log4net.pdb" target="tools\optionDlls" />
     <file src="BuildOutput\bin\Infrastructure.Testing.pdb" target="tools\optionDlls" />
     <file src="BuildOutput\bin\Infrastructure.Data.pdb" target="tools\optionDlls" />
