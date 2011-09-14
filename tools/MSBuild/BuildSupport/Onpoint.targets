@@ -43,7 +43,7 @@
   
   <!-- Nuget -->
   <PropertyGroup>
-    <NugetPackageSpecFile>$(MSBuildProjectDirectory)\$(ProductName).nuspec</NugetPackageSpecFile>
+    <!--<NugetPackageSpecFile>$(MSBuildProjectDirectory)\$(ProductName).nuspec</NugetPackageSpecFile>-->
     <NugetPackageName>$(ProductName).$(AppVersion).$(BuildNumber)</NugetPackageName>
   </PropertyGroup>
  
@@ -67,7 +67,7 @@
     <Message Importance="high" Text="MSBuild Path: $(MSBuildBinPath)"/>
     <Message Importance="high" Text="-------------------------------------------------------"/>
     <Message Importance="high" Text="Uses Help" Condition = "Exists('$(HelpProject)')"/>
-    <Message Importance="high" Text="Uses Nuget" Condition = "Exists('$(NugetPackageSpecFile)')"/>
+    <Message Importance="high" Text="Uses Nuget" Condition = "@(NugetItem) != ''"/>
     <Message Importance="high" Text="GenerateDocs = $(GenerateDocs)"/>
     <Message Importance="high" Text="PublishWebHelp = $(PublishWebHelp)"/>
     <Message Importance="high" Text="PublicWebHelpDir = $(PublicWebHelpDir)"/>
@@ -80,7 +80,7 @@
     <MakeDir Directories="$(DistributionDir)"/>
     <MakeDir Directories="$(HelpDir)"/>
     <MakeDir Directories="$(TestOutputDir)"/>
-    <MakeDir Directories="$(NuGetPackageDir)" Condition="Exists('$(NugetPackageSpecFile)')"/>
+    <MakeDir Directories="$(NuGetPackageDir)" Condition="@(NugetItem) != ''"/>
   </Target>
 
   <Target Name="InstallPackages">
@@ -207,22 +207,22 @@
                SubstitutionsRoot="/msb:Project/msb:ProjectExtensions/msb:helpWebConfigContent" />
   </Target>
 
-  <Target Name="Package" Condition="Exists('$(NugetPackageSpecFile)')">
+  <Target Name="Package" Condition="@(NugetItem) != ''">
     <Message Importance="high" Text="Package"/>
 
-    <XmlUpdate XmlFileName="$(NugetPackageSpecFile)"
+    <XmlUpdate XmlFileName="@(NugetItem).nuspec"
                Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"
                Prefix="n"
                XPath="//n:summary"
-               Value="$(NugetPackageSummary) ($(Configuration))"/>
+               Value="%(NugetItem.NugetPackageSummary) ($(Configuration))"/>
 
-    <XmlUpdate XmlFileName="$(NugetPackageSpecFile)"
+    <XmlUpdate XmlFileName="@(NugetItem).nuspec"
                Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"
                Prefix="n"
                XPath="//n:version"
                Value="$(AppVersion).$(BuildNumber)"/>
 
-    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(NugetPackageSpecFile) -Symbols"/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack @(NugetItem).nuspec -Symbols"/>
   </Target>
 
   <Target Name="Publish">
@@ -274,22 +274,24 @@
     <Copy SourceFiles="@(SrcFiles)" DestinationFolder="$(SrcDir)\%(RecursiveDir)" />
   </Target>
 
-  <Target Name="CreateNugetPackage" Condition="Exists('$(NugetPackageSpecFile)')">
+  <Target Name="CreateNugetPackage" Condition="@(NugetItem) != ''">
     <Message Importance="high" Text="Package"/>
 
-    <XmlUpdate XmlFileName="$(NugetPackageSpecFile)"
+    <XmlUpdate XmlFileName="%(NugetItem.Identity).nuspec"
                Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"
                Prefix="n"
                XPath="//n:summary"
-               Value="$(NugetPackageSummary) ($(Configuration))"/>
+               Value="%(NugetItem.NugetPackageSummary) ($(Configuration))"/>
 
-    <XmlUpdate XmlFileName="$(NugetPackageSpecFile)"
+    <XmlUpdate XmlFileName="%(NugetItem.Identity).nuspec"
                Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"
                Prefix="n"
                XPath="//n:version"
                Value="$(AppVersion).$(BuildNumber)"/>
 
-    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(NugetPackageSpecFile) -Symbols"/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(MSBuildProjectDirectory)\%(NugetItem.Identity).nuspec -Symbols"/>
+    <!--
+    -->
   </Target>
 
   <Target Name="PublishNugetPackage" Condition="$(PublishNugetPackage)">

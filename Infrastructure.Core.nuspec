@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Onpoint.Infrastructure-Core</id>
+    <title>Onpoint Infrastructure Core</title>
+    <version>0.4.1.0</version>
+    <authors>Onpoint On Demand</authors>
+    <owners>Onpoint On Demand</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Generic support for IOC/DI, logging, data etc.
+	  
+	  See tools\OptionDlls for optional dlls related to 
+	  log4net, testing and data support.
+    </description>
+    <summary>Onpoint Infrastructure Core for .NET Projects (Debug)</summary>
+    <dependencies>
+    </dependencies>
+    <tags>onpoint</tags>
+  </metadata>
+  <files>
+    <file src="BuildOutput\bin\Infrastructure.Core.dll" target="lib\net40-full" />
+    <file src="BuildOutput\bin\Infrastructure.Core.pdb" target="lib\net40-full" />
+    <file src="BuildOutput\src\Infrastructure.Core\**\*.cs" target="src" />
+  </files>
+</package>
