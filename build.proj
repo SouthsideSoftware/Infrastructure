@@ -38,6 +38,20 @@
     </BinInclude>
   </PropertyGroup>
 
+  <!-- Source files to publish -->
+  <PropertyGroup>
+    <SrcInclude>
+      src\**\*.cs;
+    </SrcInclude>
+  </PropertyGroup>
+
+  <!-- Source files to ignore -->
+  <PropertyGroup>
+    <SrcExclude>
+      src\Tests\**\*.cs;
+    </SrcExclude>
+  </PropertyGroup>
+
   <!-- Nuget -->
   <PropertyGroup>
     <NugetPackageSummary>Onpoint Infrastructure for .NET Projects</NugetPackageSummary>

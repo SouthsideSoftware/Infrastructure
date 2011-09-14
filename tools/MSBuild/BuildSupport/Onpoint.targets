@@ -18,6 +18,7 @@
     <HelpDir>$(OutputDir)\Help</HelpDir>
     <TestOutputDir>$(OutputDir)\TestResults</TestOutputDir>
     <NuGetPackageDir>$(OutputDir)\NuGet</NuGetPackageDir>
+    <SrcDir>$(OutputDir)\src</SrcDir>
   </PropertyGroup>
 
   <!-- Version Information -->
@@ -221,13 +222,14 @@
                XPath="//n:version"
                Value="$(AppVersion).$(BuildNumber)"/>
 
-    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(NugetPackageSpecFile)"/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(NugetPackageSpecFile) -Symbols"/>
   </Target>
 
   <Target Name="Publish">
     <Message Importance="high" Text="Publish"/>
     
     <CallTarget Targets="PublishBin"/>
+    <CallTarget Targets="PublishSource"/>
     <CallTarget Targets="PublishHelp"/>
     <CallTarget Targets="$(CustomPublishTask)" Condition="$(CustomPublishTask) != ''"/>
     <CallTarget Targets="CreateNugetPackage"/>
@@ -261,6 +263,17 @@
     <Copy SourceFiles="@(HelpFiles)" DestinationFolder="$(PublicWebHelpDir)\%(RecursiveDir)"/>
   </Target>
 
+  <Target Name="PublishSource" Condition="$(SrcInclude) != ''">
+    <Message Importance="high" Text="PublishSource"/>
+
+    <CreateItem Include="$(SrcInclude)" Exclude="$(SrcExclude)">
+      <Output TaskParameter="Include" ItemName="SrcFiles"/>
+    </CreateItem>
+
+    <RemoveDir Directories="$(SrcDir)" ContinueOnError="true"/>
+    <Copy SourceFiles="@(SrcFiles)" DestinationFolder="$(SrcDir)\%(RecursiveDir)" />
+  </Target>
+
   <Target Name="CreateNugetPackage" Condition="Exists('$(NugetPackageSpecFile)')">
     <Message Importance="high" Text="Package"/>
 
@@ -276,7 +289,7 @@
                XPath="//n:version"
                Value="$(AppVersion).$(BuildNumber)"/>
 
-    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(NugetPackageSpecFile)"/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(NugetPackageSpecFile) -Symbols"/>
   </Target>
 
   <Target Name="PublishNugetPackage" Condition="$(PublishNugetPackage)">
