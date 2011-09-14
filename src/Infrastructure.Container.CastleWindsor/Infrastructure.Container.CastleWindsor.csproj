@@ -47,6 +47,9 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\..\packages\Castle.Windsor.3.0.0.2001\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="Infrastructure.Core, Version=0.4.1.0, Culture=neutral, PublicKeyToken=402ece5bf4b57589, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Onpoint.Infrastructure-Core.0.4.1.0\lib\net40-full\Infrastructure.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -67,12 +70,6 @@
     <Compile Include="NonTrackedTransientLifestyle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindsorServiceLocator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Infrastructure.Core\Infrastructure.Core.csproj">
-      <Project>{941D0CE6-D735-47AD-8521-7171BCB2833A}</Project>
-      <Name>Infrastructure.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
