@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets ="Dist" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- See https://onpointondemand.fogbugz.com/default.asp?W695 for documentation -->
-	<!-- Tools -->
-	<PropertyGroup>
-		<ToolsDir>$(MSBuildProjectDirectory)\tools</ToolsDir>
-		<PackageDir>$(MSBuildProjectDirectory)\packages</PackageDir>
-		<MSBuildCommunityTasksPath>$(ToolsDir)\MSBuild\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
-		<SouthSideTasksPath>$(ToolsDir)\MSBuild\SouthSideBuildTasks</SouthSideTasksPath>
-		<NuGet>$(ToolsDir)\nuget.exe</NuGet>
-	</PropertyGroup>
+  <!-- Tools -->
+  <PropertyGroup>
+    <ToolsDir>$(MSBuildProjectDirectory)\tools</ToolsDir>
+    <PackageDir>$(MSBuildProjectDirectory)\packages</PackageDir>
+    <MSBuildCommunityTasksPath>$(ToolsDir)\MSBuild\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
+    <SouthSideTasksPath>$(ToolsDir)\MSBuild\SouthSideBuildTasks</SouthSideTasksPath>
+    <NuGet>$(ToolsDir)\nuget.exe</NuGet>
+  </PropertyGroup>
 
-	<!-- Artifact Directories -->
-	<PropertyGroup>
-		<OutputDir>$(MSBuildProjectDirectory)\BuildOutput</OutputDir>
-		<BinDir>$(OutputDir)\bin</BinDir>
-		<DistributionDir>$(OutputDir)\distribution</DistributionDir>
-		<HelpDir>$(OutputDir)\Help</HelpDir>
-		<TestOutputDir>$(OutputDir)\TestResults</TestOutputDir>
+  <!-- Artifact Directories -->
+  <PropertyGroup>
+    <OutputDir>$(MSBuildProjectDirectory)\BuildOutput</OutputDir>
+    <BinDir>$(OutputDir)\bin</BinDir>
+    <DistributionDir>$(OutputDir)\distribution</DistributionDir>
+    <HelpDir>$(OutputDir)\Help</HelpDir>
+    <TestOutputDir>$(OutputDir)\TestResults</TestOutputDir>
     <NuGetPackageDir>$(OutputDir)\NuGet</NuGetPackageDir>
-	</PropertyGroup>
+  </PropertyGroup>
 
-	<!-- Version Information -->
-	<PropertyGroup>
-		<InTeamCity Condition="'$(build_number)' == ''">false</InTeamCity>
-		<InTeamCity Condition="'$(build_number)' != ''">true</InTeamCity>
-		<BuildNumber Condition="!$(InTeamCity)">0</BuildNumber>
-		<BuildNumber Condition="$(InTeamCity)">$(build_number)</BuildNumber>
-	</PropertyGroup>
+  <!-- Version Information -->
+  <PropertyGroup>
+    <InTeamCity Condition="'$(build_number)' == ''">false</InTeamCity>
+    <InTeamCity Condition="'$(build_number)' != ''">true</InTeamCity>
+    <BuildNumber Condition="!$(InTeamCity)">0</BuildNumber>
+    <BuildNumber Condition="$(InTeamCity)">$(build_number)</BuildNumber>
+  </PropertyGroup>
 
   <!-- Help -->
   <PropertyGroup>
@@ -35,10 +35,10 @@
     <PublicWebHelpDir>D:\ApiDocumentation\$(ProductName)</PublicWebHelpDir>
   </PropertyGroup>
 
-	<!-- Misc -->
-	<PropertyGroup>
-		<ZipQualifier>_$(AppVersion).$(BuildNumber)_$(Configuration).zip</ZipQualifier>
-	</PropertyGroup>
+  <!-- Misc -->
+  <PropertyGroup>
+    <ZipQualifier>_$(AppVersion).$(BuildNumber)_$(Configuration).zip</ZipQualifier>
+  </PropertyGroup>
   
   <!-- Nuget -->
   <PropertyGroup>
@@ -46,22 +46,22 @@
     <NugetPackageName>$(ProductName).$(AppVersion).$(BuildNumber)</NugetPackageName>
   </PropertyGroup>
  
-	<ItemGroup>
-		<ProjectToBuild Include="$(MSBuildProjectDirectory)\$(ProductName).sln"></ProjectToBuild>
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectToBuild Include="$(MSBuildProjectDirectory)\$(ProductName).sln"></ProjectToBuild>
+  </ItemGroup>
 
-	<Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets"/>
-	<Import Project="$(SouthSideTasksPath)\SouthSideBuildTasks.MSBuild.Tasks.Targets"/>
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets"/>
+  <Import Project="$(SouthSideTasksPath)\SouthSideBuildTasks.MSBuild.Tasks.Targets"/>
 
-	<Target Name="Dist" DependsOnTargets="Clean;InstallPackages;Version;Build;Test;Document;Publish"/>
+  <Target Name="Dist" DependsOnTargets="Clean;InstallPackages;Version;Build;Test;Document;Publish"/>
   <Target Name="TeamCityBuild" DependsOnTargets="Clean;InstallPackages;Version;Build;Test"/>
   <Target Name="TeamCityPublish" DependsOnTargets="Document;Publish"/>
   
-	<Target Name="Clean">
+  <Target Name="Clean">
     <Message Importance="high" Text="Clean"/>
-		<Message Importance="high" Text="======================================================="/>
+    <Message Importance="high" Text="======================================================="/>
     <Message Importance="high" Text="Configuration = $(Configuration)"/>
-		<Message Importance="high" Text="Version = $(AppVersion).$(BuildNumber)"/>
+    <Message Importance="high" Text="Version = $(AppVersion).$(BuildNumber)"/>
     <Message Importance="high" Text="DB = $(SchemaVersion)"/>
     <Message Importance="high" Text="MSBuild Path: $(MSBuildBinPath)"/>
     <Message Importance="high" Text="-------------------------------------------------------"/>
@@ -72,15 +72,15 @@
     <Message Importance="high" Text="PublicWebHelpDir = $(PublicWebHelpDir)"/>
     <Message Importance="high" Text="PublishNugetPackage = $(PublishNugetPackage)"/>
     <Message Importance="high" Text="PublishNugetDestination = $(NugetPushUrl)"/>
-		<Message Importance="high" Text="======================================================="/>
+    <Message Importance="high" Text="======================================================="/>
     <RemoveDir Directories="$(OutputDir)" ContinueOnError="true"/>
-		<MakeDir Directories="$(OutputDir)"/>
-		<MakeDir Directories="$(BinDir)"/>
-		<MakeDir Directories="$(DistributionDir)"/>
-		<MakeDir Directories="$(HelpDir)"/>
+    <MakeDir Directories="$(OutputDir)"/>
+    <MakeDir Directories="$(BinDir)"/>
+    <MakeDir Directories="$(DistributionDir)"/>
+    <MakeDir Directories="$(HelpDir)"/>
     <MakeDir Directories="$(TestOutputDir)"/>
     <MakeDir Directories="$(NuGetPackageDir)" Condition="Exists('$(NugetPackageSpecFile)')"/>
-	</Target>
+  </Target>
 
   <Target Name="InstallPackages">
     <Message Importance="high" Text="Installing packages for solution"/>
@@ -94,19 +94,19 @@
           Command="$(NuGet) install %(ProjectWithPackages.Identity) -s https://go.microsoft.com/fwlink/?LinkID=206669;http://development.onpointod.com:8082/nuget -o $(MSBuildProjectDirectory)\packages"/>
   </Target>
   
-	<Target Name="Version">
-		<Message Importance="high" Text="Version"/>
-		<Time>
-			<Output TaskParameter="Year" PropertyName="Year"/>
-		</Time>
-		<AssemblyInfo OutputFile="$(MSBuildProjectDirectory)\src\CommonAssemblyInfo.cs" CodeLanguage="C#"
-					  ComVisible="false" AssemblyCulture=""
-					  AssemblyVersion="$(AppVersion)"
-					  AssemblyFileVersion="$(AppVersion).$(BuildNumber)"
-					  AssemblyCopyright="Copyright � $(CompanyName) $(Year)"
-					  AssemblyConfiguration="$(Configuration)"
-					  AssemblyCompany="$(CompanyName)"
-					  AssemblyProduct="$(ProductDescription) ($(Configuration) DB: $(SchemaVersion))"/>
+  <Target Name="Version">
+    <Message Importance="high" Text="Version"/>
+    <Time>
+      <Output TaskParameter="Year" PropertyName="Year"/>
+    </Time>
+    <AssemblyInfo OutputFile="$(MSBuildProjectDirectory)\src\CommonAssemblyInfo.cs" CodeLanguage="C#"
+            ComVisible="false" AssemblyCulture=""
+            AssemblyVersion="$(AppVersion)"
+            AssemblyFileVersion="$(AppVersion).$(BuildNumber)"
+            AssemblyCopyright="Copyright � $(CompanyName) $(Year)"
+            AssemblyConfiguration="$(Configuration)"
+            AssemblyCompany="$(CompanyName)"
+            AssemblyProduct="$(ProductDescription) ($(Configuration) DB: $(SchemaVersion))"/>
 
     <CallTarget Targets="VersionHelp"/>
   </Target>
@@ -120,14 +120,14 @@
                Value="$(HelpTitle) $(AppVersion).$(BuildNumber)"/>
   </Target>
 
-	<Target Name="Build">
-		<Message Importance="high" Text="Build"/>
+  <Target Name="Build">
+    <Message Importance="high" Text="Build"/>
     <Time>
       <Output TaskParameter="Ticks" PropertyName="StartTick"/>
     </Time>
      <MSBuild Projects="@(ProjectToBuild)"
-				 Targets="Rebuild"
-				 Properties="Configuration=$(Configuration);Platform=Any CPU"/>
+         Targets="Rebuild"
+         Properties="Configuration=$(Configuration);Platform=Any CPU"/>
     <Time>
       <Output TaskParameter="Ticks" PropertyName="EndTick"/>
     </Time>
@@ -142,10 +142,10 @@
     <Message Importance="high" Text="Compile Seconds: $(ElapsedSeconds)"/>
   </Target>
 
-	<Target Name="Test" Condition="@(MSpecTestItem) != '' or @(NUnitTestItem) != ''">
-		<Message Importance="high" Text="Test"/>
+  <Target Name="Test" Condition="@(MSpecTestItem) != '' or @(NUnitTestItem) != ''">
+    <Message Importance="high" Text="Test"/>
     <CallTarget Targets="MSpecTests;NUnitTests"/>
-	</Target>
+  </Target>
 
   <Target Name="MSpecTests" Outputs="%(MSpecTestItem.Identity)" Condition="@(MSpecTestItem) != ''">
     <Message Importance="high" Text="Testing: %(MSpecTestItem.TestDir)\%(MSpecTestItem.Identity)"/>
@@ -224,15 +224,15 @@
     <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(NugetPackageSpecFile)"/>
   </Target>
 
-	<Target Name="Publish">
-		<Message Importance="high" Text="Publish"/>
+  <Target Name="Publish">
+    <Message Importance="high" Text="Publish"/>
     
     <CallTarget Targets="PublishBin"/>
     <CallTarget Targets="PublishHelp"/>
     <CallTarget Targets="$(CustomPublishTask)" Condition="$(CustomPublishTask) != ''"/>
     <CallTarget Targets="CreateNugetPackage"/>
     <CallTarget Targets="PublishNugetPackage"/>
-	</Target>
+  </Target>
 
   <Target Name="PublishBin" Condition="$(BinInclude) != ''">
     <Message Importance="high" Text="PublishBin"/>
