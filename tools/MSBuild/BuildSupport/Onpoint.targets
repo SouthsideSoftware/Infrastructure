@@ -43,7 +43,6 @@
   
   <!-- Nuget -->
   <PropertyGroup>
-    <!--<NugetPackageSpecFile>$(MSBuildProjectDirectory)\$(ProductName).nuspec</NugetPackageSpecFile>-->
     <NugetPackageName>$(ProductName).$(AppVersion).$(BuildNumber)</NugetPackageName>
   </PropertyGroup>
  
@@ -290,8 +289,6 @@
                Value="$(AppVersion).$(BuildNumber)"/>
 
     <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(MSBuildProjectDirectory)\%(NugetItem.Identity).nuspec -Symbols"/>
-    <!--
-    -->
   </Target>
 
   <Target Name="PublishNugetPackage" Condition="$(PublishNugetPackage)">
