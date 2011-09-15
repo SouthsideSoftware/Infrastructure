@@ -10,8 +10,7 @@
     <description>
       Generic support for IOC/DI, logging, data etc.
 	  
-	  See tools\OptionDlls for optional dlls related to 
-	  log4net, testing and data support.
+	  See Optional Packages for Logging and Container support.
     </description>
     <summary>Onpoint Infrastructure Core for .NET Projects (Debug)</summary>
     <dependencies>
