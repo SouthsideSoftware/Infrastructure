@@ -65,27 +65,27 @@
         <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
     </NugetItem>
     <NugetItem Include="Infrastructure.Container.CastleWindsor">
-        <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
+        <NugetPackageSummary>Onpoint CastleWindsor Container Support for Infrastructure.Core</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure.Container-CastleWindsor</NugetPackageId>
         <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
     </NugetItem>
     <NugetItem Include="Infrastructure.Logging.NLog">
-        <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
+        <NugetPackageSummary>Onpoint NLog Logging Support for Infrastructure.Core</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure.Logging-NLog</NugetPackageId>
         <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
     </NugetItem>
     <NugetItem Include="Infrastructure.Logging.Log4Net">
-        <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
+        <NugetPackageSummary>Onpoint Log4Net Logging Support for Infrastructure.Core</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure.Logging-Log4Net</NugetPackageId>
         <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
     </NugetItem>
     <NugetItem Include="Infrastructure.Testing">
-        <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
+        <NugetPackageSummary>Onpoint Testing Sample for Infrastructure</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure-Testing</NugetPackageId>
         <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
     </NugetItem>
     <NugetItem Include="Infrastructure.Data">
-        <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
+        <NugetPackageSummary>Onpoint Data Sample for Infrastructure</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure-Data</NugetPackageId>
         <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
     </NugetItem>
