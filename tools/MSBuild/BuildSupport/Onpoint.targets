@@ -40,11 +40,6 @@
   <PropertyGroup>
     <ZipQualifier>_$(AppVersion).$(BuildNumber)_$(Configuration).zip</ZipQualifier>
   </PropertyGroup>
-  
-  <!-- Nuget -->
-  <PropertyGroup>
-    <NugetPackageName>$(ProductName).$(AppVersion).$(BuildNumber)</NugetPackageName>
-  </PropertyGroup>
  
   <ItemGroup>
     <ProjectToBuild Include="$(MSBuildProjectDirectory)\$(ProductName).sln"></ProjectToBuild>
@@ -292,8 +287,8 @@
   </Target>
 
   <Target Name="PublishNugetPackage" Condition="$(PublishNugetPackage)">
-    <Message Importance="high" Text="Publish packages $(NugetPackageName)"/>
-    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push -source $(NugetPushUrl) $(NugetPackageId).$(AppVersion).$(BuildNumber).nupkg"/>
+    <Message Importance="high" Text="Publish packages %(NugetItem.NugetPackageSummary)"/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push -source %(NugetItem.NugetPushUrl) %(NugetItem.NugetPackageId).$(AppVersion).$(BuildNumber).nupkg"/>
   </Target>
   
 </Project>
