@@ -7,12 +7,10 @@
     <authors>Onpoint On Demand</authors>
     <owners>Onpoint On Demand</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>
-      Generic support for IOC/DI, logging, data etc.
-	  
-	  See tools\OptionDlls for optional dlls related to 
-	  log4net, testing and data support.
-    </description>
+    <description>Generic support for IOC/DI, logging, data etc.
+	  The default implementation is NLog and CastleWindsor. 
+      If you would like to use log4net or a different container, reference the Core project
+      and the logging and container of your choice.</description>
     <summary>Onpoint Infrastructure for .NET Projects (Debug)</summary>
     <dependencies>
       <dependency id="NLog" version="2.0.0.2000" />

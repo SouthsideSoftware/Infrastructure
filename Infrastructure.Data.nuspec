@@ -7,10 +7,8 @@
     <authors>Onpoint On Demand</authors>
     <owners>Onpoint On Demand</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>
-      Generic support for IOC/DI, logging, data etc.
-	  
-	  See Optional Packages for Logging and Container support.
+    <description>Generic support for Data for Onpoint.Infrastructure projects.
+	  See optional packages for logging and container support.
     </description>
     <summary>Onpoint Data Sample for Infrastructure (Debug)</summary>
     <dependencies>

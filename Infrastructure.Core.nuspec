@@ -9,8 +9,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       Generic support for IOC/DI, logging, data etc.
-	  
-	  See Optional Packages for Logging and Container support.
+    This package is set up with no default logging and container allowing you greater control over the packages.
+	  See optional packages for logging and container support.
     </description>
     <summary>Onpoint Infrastructure Core for .NET Projects (Debug)</summary>
     <dependencies>
