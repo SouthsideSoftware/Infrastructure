@@ -288,7 +288,10 @@
 
   <Target Name="PublishNugetPackage" Condition="$(PublishNugetPackage)">
     <Message Importance="high" Text="Publish packages %(NugetItem.NugetPackageSummary)"/>
-    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push -source %(NugetItem.NugetPushUrl) %(NugetItem.NugetPackageId).$(AppVersion).$(BuildNumber).nupkg"/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push $(NugetAPIKey) -source %(NugetItem.NugetPushUrl) %(NugetItem.NugetPackageId).$(AppVersion).$(BuildNumber).nupkg"/>
+    <!--Publish the symbols-->
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push $(NugetAPIKey) -source http://nuget.gw.symbolsource.org/Public/NuGet %(NugetItem.NugetPackageId).$(AppVersion).$(BuildNumber).symbols.nupkg"/>
+
   </Target>
   
 </Project>
