@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>Onpoint.Infrastructure-Core</id>
-    <title>Onpoint Infrastructure-Core</title>
+    <id>Onpoint.Infrastructure.Container-CastleWindsor</id>
+    <title>Onpoint Infrastructure Container-CastleWindsor</title>
     <version>0.4.1.0</version>
     <authors>Onpoint On Demand</authors>
     <owners>Onpoint On Demand</owners>
@@ -15,13 +15,16 @@
     </description>
     <summary>Onpoint Infrastructure Core for .NET Projects (Debug)</summary>
     <dependencies>
+      <dependency id="Onpoint.Infrastructure-Core" version="0.4.1.0" />
+      <dependency id="Castle.Core" version="3.0.0.2001" />
+      <dependency id="Castle.Windsor" version="3.0.0.2001" />
     </dependencies>
     <tags>onpoint</tags>
   </metadata>
   <files>
-    <file src="BuildOutput\bin\Infrastructure.Core.dll" target="lib\net40-full" />
-    <file src="BuildOutput\bin\Infrastructure.Core.pdb" target="lib\net40-full" />
+    <file src="BuildOutput\bin\Infrastructure.Container.CastleWindsor.dll" target="lib\net40-full" />
+    <file src="BuildOutput\bin\Infrastructure.Container.CastleWindsor.pdb" target="lib\net40-full" />
     <file src="BuildOutput\src\*.cs" target="src" />
-    <file src="BuildOutput\src\Infrastructure.Core\**\*.cs" target="src\Infrastructure.Core" />
+    <file src="BuildOutput\src\Infrastructure.Container.CastleWindsor\**\*.cs" target="src\Infrastructure.Container.CastleWindsor" />
   </files>
 </package>

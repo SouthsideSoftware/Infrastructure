@@ -263,10 +263,10 @@
     <Copy SourceFiles="@(HelpFiles)" DestinationFolder="$(PublicWebHelpDir)\%(RecursiveDir)"/>
   </Target>
 
-  <Target Name="PublishSource" Condition="@(NugetItem) != ''">
+  <Target Name="PublishSource" Condition="$(SrcInclude) != ''">
     <Message Importance="high" Text="PublishSource"/>
 
-    <CreateItem Include="%(NugetItem.SrcInclude)" Exclude="%(NugetItem.SrcExclude)">
+    <CreateItem Include="$(SrcInclude)" Exclude="$(SrcExclude)">
       <Output TaskParameter="Include" ItemName="SrcFiles"/>
     </CreateItem>
 

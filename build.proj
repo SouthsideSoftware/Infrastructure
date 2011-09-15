@@ -38,22 +38,35 @@
     </BinInclude>
   </PropertyGroup>
 
+  <!-- Source files to publish -->
+  <PropertyGroup>
+    <SrcInclude>
+      src\**\*.cs;
+    </SrcInclude>
+  </PropertyGroup>
+
+  <!-- Source files to ignore -->
+  <PropertyGroup>
+    <SrcExclude>
+      src\Tests\**\*.cs;
+    </SrcExclude>
+  </PropertyGroup>
+
   <!-- Nuget v2 -->
   <ItemGroup>
     <NugetItem Include="Infrastructure">
         <NugetPackageSummary>Onpoint Infrastructure for .NET Projects</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure</NugetPackageId>
         <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
-        <SrcInclude>
-          src\**\*.cs;
-        </SrcInclude>
-        <SrcExclude>
-          src\Tests\**\*.cs;
-        </SrcExclude>
     </NugetItem>
     <NugetItem Include="Infrastructure.Core">
         <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure-Core</NugetPackageId>
+        <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
+    </NugetItem>
+    <NugetItem Include="Infrastructure.Container.CastleWindsor">
+        <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
+        <NugetPackageId>Onpoint.Infrastructure.Container-CastleWindsor</NugetPackageId>
         <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
     </NugetItem>
   </ItemGroup>
