@@ -12,7 +12,7 @@
 	  
 	  See Optional Packages for Logging and Container support.
     </description>
-    <summary>Onpoint Infrastructure Core for .NET Projects (Debug)</summary>
+    <summary>Onpoint Data Sample for Infrastructure (Debug)</summary>
     <dependencies>
     </dependencies>
     <tags>onpoint</tags>

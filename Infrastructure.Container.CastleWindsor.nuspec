@@ -8,7 +8,7 @@
     <owners>Onpoint On Demand</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Castle Windsor container support for Onpoint.Infrastructure.Core</description>
-    <summary>Onpoint Infrastructure Core for .NET Projects (Debug)</summary>
+    <summary>Onpoint CastleWindsor Container Support for Infrastructure.Core (Debug)</summary>
     <dependencies>
       <dependency id="Onpoint.Infrastructure-Core" version="0.4.1.0" />
       <dependency id="Castle.Core" version="3.0.0.2001" />
