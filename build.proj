@@ -69,6 +69,16 @@
         <NugetPackageId>Onpoint.Infrastructure.Container-CastleWindsor</NugetPackageId>
         <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
     </NugetItem>
+    <NugetItem Include="Infrastructure.Logging.NLog">
+        <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
+        <NugetPackageId>Onpoint.Infrastructure.Logging-NLog</NugetPackageId>
+        <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
+    </NugetItem>
+    <NugetItem Include="Infrastructure.Logging.Log4Net">
+        <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
+        <NugetPackageId>Onpoint.Infrastructure.Logging-Log4Net</NugetPackageId>
+        <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
+    </NugetItem>
   </ItemGroup>
 
   <Import Project="$(MSBuildProjectDirectory)\Tools\MSBuild\BuildSupport\Onpoint.Targets"/>
