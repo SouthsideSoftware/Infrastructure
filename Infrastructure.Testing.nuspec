@@ -10,7 +10,7 @@
     <description>
       Generic support for IOC/DI, logging, data etc.
 	  
-	  See Optional Packages for Logging and Container support.
+	  See optional packages for logging and container support.
     </description>
     <summary>Onpoint Testing Sample for Infrastructure (Debug)</summary>
     <dependencies>

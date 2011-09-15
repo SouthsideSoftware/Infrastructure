@@ -7,7 +7,7 @@
     <authors>Onpoint On Demand</authors>
     <owners>Onpoint On Demand</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>NLog logging support for Onpoint.Infrastructure.Core</description>
+    <description>NLog logging support for Infrastructure.Core</description>
     <summary>Onpoint NLog Logging Support for Infrastructure.Core (Debug)</summary>
     <dependencies>
       <dependency id="NLog" version="2.0.0.2000" />
