@@ -5,7 +5,7 @@
 
   <!-- Version Information -->
   <PropertyGroup>
-    <AppVersion>0.4.3</AppVersion>
+    <AppVersion>0.4.7</AppVersion>
     <SchemaVersion>0</SchemaVersion>
   </PropertyGroup>
 
@@ -57,37 +57,44 @@
     <NugetItem Include="Infrastructure">
         <NugetPackageSummary>Onpoint Infrastructure for .NET Projects</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure</NugetPackageId>
-        <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
+        <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
+        <NugetPublishSymbols>true</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Core">
         <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure-Core</NugetPackageId>
-        <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
+        <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
+        <NugetPublishSymbols>true</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Container.CastleWindsor">
         <NugetPackageSummary>Onpoint CastleWindsor Container Support for Infrastructure.Core</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure.Container-CastleWindsor</NugetPackageId>
-        <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
+        <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
+        <NugetPublishSymbols>true</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Logging.NLog">
         <NugetPackageSummary>Onpoint NLog Logging Support for Infrastructure.Core</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure.Logging-NLog</NugetPackageId>
-        <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
+        <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
+        <NugetPublishSymbols>true</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Logging.Log4Net">
         <NugetPackageSummary>Onpoint Log4Net Logging Support for Infrastructure.Core</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure.Logging-Log4Net</NugetPackageId>
-        <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
+        <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
+        <NugetPublishSymbols>true</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Testing">
         <NugetPackageSummary>Onpoint Testing Sample for Infrastructure</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure-Testing</NugetPackageId>
-        <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
+        <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
+        <NugetPublishSymbols>true</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Data">
         <NugetPackageSummary>Onpoint Data Sample for Infrastructure</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure-Data</NugetPackageId>
-        <NugetPushUrl>http://packages.nuget.org/v1/</NugetPushUrl>
+        <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
+        <NugetPublishSymbols>true</NugetPublishSymbols>
     </NugetItem>
   </ItemGroup>
 

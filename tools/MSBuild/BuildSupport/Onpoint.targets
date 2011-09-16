@@ -66,7 +66,6 @@
     <Message Importance="high" Text="PublishWebHelp = $(PublishWebHelp)"/>
     <Message Importance="high" Text="PublicWebHelpDir = $(PublicWebHelpDir)"/>
     <Message Importance="high" Text="PublishNugetPackage = $(PublishNugetPackage)"/>
-    <Message Importance="high" Text="PublishNugetDestination = $(NugetPushUrl)"/>
     <Message Importance="high" Text="======================================================="/>
     <RemoveDir Directories="$(OutputDir)" ContinueOnError="true"/>
     <MakeDir Directories="$(OutputDir)"/>
@@ -268,7 +267,7 @@
     <Copy SourceFiles="@(SrcFiles)" DestinationFolder="$(SrcDir)\%(RecursiveDir)" />
   </Target>
 
-  <Target Name="CreateNugetPackage" Condition="@(NugetItem) != ''">
+  <Target Name="CreateNugetPackage" Outputs="%(NugetItem.Identity)" Condition="@(NugetItem) != ''">
     <Message Importance="high" Text="Package"/>
 
     <XmlUpdate XmlFileName="%(NugetItem.Identity).nuspec"
@@ -283,14 +282,15 @@
                XPath="//n:version"
                Value="$(AppVersion).$(BuildNumber)"/>
 
-    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(MSBuildProjectDirectory)\%(NugetItem.Identity).nuspec -Symbols"/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(MSBuildProjectDirectory)\%(NugetItem.Identity).nuspec -Symbols" Condition="%(NugetItem.NugetPublishSymbols)"/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) pack $(MSBuildProjectDirectory)\%(NugetItem.Identity).nuspec" Condition="!%(NugetItem.NugetPublishSymbols)"/>
   </Target>
 
-  <Target Name="PublishNugetPackage" Condition="$(PublishNugetPackage)">
-    <Message Importance="high" Text="Publish packages %(NugetItem.NugetPackageSummary)"/>
-    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push %(NugetItem.NugetPackageId).$(AppVersion).$(BuildNumber).nupkg  $(NugetAPIKey) -source %(NugetItem.NugetPushUrl)"/>
+  <Target Name="PublishNugetPackage" Outputs="%(NugetItem.Identity)" Condition="$(PublishNugetPackage)">
+    <Message Importance="high" Text="Publish packages %(NugetItem.NugetPackageSummary) to %(NugetItem.NugetPushUrl) with symbols=%(NugetItem.NugetPublishSymbols)"/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push %(NugetItem.NugetPackageId).$(AppVersion).$(BuildNumber).nupkg  -source %(NugetItem.NugetPushUrl)"/>
     <!--Publish the symbols-->
-    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push %(NugetItem.NugetPackageId).$(AppVersion).$(BuildNumber).symbols.nupkg $(NugetAPIKey) -source http://nuget.gw.symbolsource.org/Public/NuGet "/>
+    <Exec WorkingDirectory="$(NuGetPackageDir)" Command="$(NuGet) push %(NugetItem.NugetPackageId).$(AppVersion).$(BuildNumber).symbols.nupkg -source http://nuget.gw.symbolsource.org/Public/NuGet " Condition="%(NugetItem.NugetPublishSymbols)"/>
 
   </Target>
   
