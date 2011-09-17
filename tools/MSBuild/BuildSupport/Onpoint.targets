@@ -95,9 +95,9 @@
     </Time>
     <AssemblyInfo OutputFile="$(MSBuildProjectDirectory)\src\CommonAssemblyInfo.cs" CodeLanguage="C#"
             ComVisible="false" AssemblyCulture=""
-            AssemblyVersion="$(AppVersion)"
+            AssemblyVersion="$(AppVersion).$(BuildNumber)"
             AssemblyFileVersion="$(AppVersion).$(BuildNumber)"
-            AssemblyCopyright="Copyright � $(CompanyName) $(Year)"
+            AssemblyCopyright="Copyright (C) $(CompanyName) $(Year)"
             AssemblyConfiguration="$(Configuration)"
             AssemblyCompany="$(CompanyName)"
             AssemblyProduct="$(ProductDescription) ($(Configuration) DB: $(SchemaVersion))"/>
