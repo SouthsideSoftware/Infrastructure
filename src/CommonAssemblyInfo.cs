@@ -15,8 +15,8 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("0.4.7.0")]
-[assembly: AssemblyFileVersion("0.4.7.0")]
+[assembly: AssemblyVersion("0.4.8.0")]
+[assembly: AssemblyFileVersion("0.4.8.0")]
 [assembly: AssemblyCopyright("Copyright (C) Onpoint On Demand 2011")]
 [assembly: AssemblyConfiguration("Debug")]
 [assembly: AssemblyCompany("Onpoint On Demand")]
