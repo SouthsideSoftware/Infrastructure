@@ -14,7 +14,7 @@ namespace Infrastructure.Core.Result
         /// </summary>
         /// <param name="resultCode">The result code.</param>
         /// <param name="message">The message.</param>
-        public ResultItem(ResultCode resultCode, string message)
+        public ResultItem(int resultCode, string message)
         {
             ParameterCheck.StringRequiredAndNotWhitespace(message, "message");
 
@@ -25,7 +25,7 @@ namespace Infrastructure.Core.Result
         /// <summary>
         /// The result code associated with this message
         /// </summary>
-        public ResultCode ResultCode { get; private set; }
+        public int ResultCode { get; private set; }
 
         /// <summary>
         /// The message text.

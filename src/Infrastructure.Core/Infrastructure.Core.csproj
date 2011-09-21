@@ -99,7 +99,6 @@
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
     <Compile Include="Result\ResultBase.cs" />
-    <Compile Include="Result\ResultCode.cs" />
     <Compile Include="Result\ResultItem.cs" />
     <Compile Include="Result\ResultItemBase.cs" />
     <Compile Include="Result\ResultItemCollection.cs" />

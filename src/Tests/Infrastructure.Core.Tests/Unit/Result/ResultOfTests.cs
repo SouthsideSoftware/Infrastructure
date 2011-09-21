@@ -22,7 +22,7 @@ namespace Infrastructure.Core.Tests.Unit.Result
         public void HasValue_WhenValueProvidedAndHasError_IsTrue()
         {
             var messages = new ResultBase();
-            messages.AddMessage(new ResultItemBase(ResultCode.UnexpectedException, "bad"));
+            messages.AddMessage(new ResultItem(-1, "bad"));
             new ResultOf<string>("Stuff", messages).HasValue.Should().BeTrue();
         }
 
@@ -30,7 +30,7 @@ namespace Infrastructure.Core.Tests.Unit.Result
         public void HasValue_WhenValueProvidedAndHasWarning_IsTrue()
         {
             var messages = new ResultBase();
-            messages.AddMessage(new ResultItemBase(ResultCode.RequiredAttributeNotFilled, "warning"));
+            messages.AddMessage(new ResultItem(1, "warning"));
             new ResultOf<string>("Stuff", messages).HasValue.Should().BeTrue();
         }
     }

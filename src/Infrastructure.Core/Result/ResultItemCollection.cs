@@ -9,12 +9,12 @@ namespace Infrastructure.Core.Result
     /// A collection of result items.
     /// </summary>
     [Serializable]
-    public class ResultItemCollection<TResultItem> where TResultItem : ResultItem
+    public class ResultItemCollection
     {
         /// <summary>
         /// The collection of result items.
         /// </summary>
-        protected List<TResultItem> _resultItems = new List<TResultItem>();
+        protected List<ResultItem> _resultItems = new List<ResultItem>();
 
         /// <summary>
         /// Returns true if there are no errors in the errors collection.
@@ -24,17 +24,17 @@ namespace Infrastructure.Core.Result
         /// <summary>
         /// Gets a read-only list of the errors
         /// </summary>
-        public IList<TResultItem> Errors { get { return _resultItems.Where(m => m.Type == ResultItemType.Error).ToList().AsReadOnly(); } }
+        public IList<ResultItem> Errors { get { return _resultItems.Where(m => m.Type == ResultItemType.Error).ToList().AsReadOnly(); } }
 
         /// <summary>
         /// Gets a read-only list of the warnings
         /// </summary>
-        public IList<TResultItem> Warnings { get { return _resultItems.Where(m => m.Type == ResultItemType.Warning).ToList().AsReadOnly(); } }
+        public IList<ResultItem> Warnings { get { return _resultItems.Where(m => m.Type == ResultItemType.Warning).ToList().AsReadOnly(); } }
 
         /// <summary>
         /// Gets a read-only list of all result items
         /// </summary>
-        public IList<TResultItem> Messages { get { return _resultItems.ToList().AsReadOnly(); } }
+        public IList<ResultItem> Messages { get { return _resultItems.ToList().AsReadOnly(); } }
 
         /// <summary>
         /// Get the count of all errors and warnings.
@@ -45,7 +45,7 @@ namespace Infrastructure.Core.Result
         /// Adds a result item that may be an error or a warning.
         /// </summary>
         /// <param name="resultItem">The message to add.</param>
-        public void AddMessage(TResultItem resultItem)
+        public void AddMessage(ResultItem resultItem)
         {
             ParameterCheck.ParameterRequired(resultItem, "message");
             if (!_resultItems.Contains(resultItem)) _resultItems.Add(resultItem);
@@ -55,7 +55,7 @@ namespace Infrastructure.Core.Result
         /// Append errors and warnings to this collection.
         /// </summary>
         /// <param name="resultToAppend">The object containing errors and warnings to add.</param>
-        public void AppendResult(ResultItemCollection<TResultItem> resultToAppend)
+        public void AppendResult(ResultItemCollection resultToAppend)
         {
             ParameterCheck.ParameterRequired(resultToAppend, "resultToAppend");
 
@@ -66,7 +66,7 @@ namespace Infrastructure.Core.Result
         /// Add all unique warning from an IEnumerable{ResultItem}
         /// </summary>
         /// <param name="messages">IEnumerable{ResultItem} containing items to add</param>
-        public void AddMessages(IEnumerable<TResultItem> messages)
+        public void AddMessages(IEnumerable<ResultItem> messages)
         {
             ParameterCheck.ParameterRequired(messages, "messages");
 
