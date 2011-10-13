@@ -77,6 +77,7 @@
     <Compile Include="Unit\Helpers\DirectoryAndFileHelper\when_save_file_to_stream.cs" />
     <Compile Include="Unit\Helpers\MimeTypeHelper\when_getting_extensions_of_mime_types.cs" />
     <Compile Include="Unit\Helpers\MimeTypeHelper\when_getting_mime_types_of_extensions.cs" />
+    <Compile Include="Unit\Helpers\StringHelper\TrimToMaxLengthTests.cs" />
     <Compile Include="Unit\Logging\when_using_a_static_logger_initialized_before_logging_configuration.cs" />
     <Compile Include="Unit\Result\ResultBaseTests.cs" />
     <Compile Include="Unit\Result\ResultItemBaseTests.cs" />

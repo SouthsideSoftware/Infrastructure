@@ -38,10 +38,11 @@
         </MODIFIERS_ORDER>
         <OTHER_BRACES>END_OF_LINE</OTHER_BRACES>
         <PLACE_ABSTRACT_ACCESSORHOLDER_ON_SINGLE_LINE>False</PLACE_ABSTRACT_ACCESSORHOLDER_ON_SINGLE_LINE>
+        <PLACE_FIELD_ATTRIBUTE_ON_SAME_LINE>False</PLACE_FIELD_ATTRIBUTE_ON_SAME_LINE>
         <PLACE_SIMPLE_ACCESSOR_ON_SINGLE_LINE>False</PLACE_SIMPLE_ACCESSOR_ON_SINGLE_LINE>
         <SPACE_BEFORE_TYPEOF_PARENTHESES>False</SPACE_BEFORE_TYPEOF_PARENTHESES>
         <TYPE_DECLARATION_BRACES>END_OF_LINE</TYPE_DECLARATION_BRACES>
-        <WRAP_LIMIT>150</WRAP_LIMIT>
+        <WRAP_LIMIT>225</WRAP_LIMIT>
       </FormatSettings>
       <UsingsSettings />
       <Naming2>
@@ -268,9 +269,6 @@ II.2.12 <HandlesEvent />
       <Sort>
         <Name/>
       </Sort>
-      <Group>
-        <Name Region="Nested type: ${Name}"/>
-      </Group>
     </Entry>
   </Pattern>
   
