@@ -5,7 +5,7 @@
 
   <!-- Version Information -->
   <PropertyGroup>
-    <AppVersion>0.4.8</AppVersion>
+    <AppVersion>0.4.9</AppVersion>
     <SchemaVersion>0</SchemaVersion>
   </PropertyGroup>
 
@@ -33,6 +33,7 @@
       src\Infrastructure.Container.CastleWindsor\bin\$(Configuration)\*.*;
       src\Infrastructure.Logging.Log4Net\bin\$(Configuration)\*.*;
       src\Infrastructure.Logging.NLog\bin\$(Configuration)\*.*;
+      src\Infrastructure.Logging.Trace\bin\$(Configuration)\*.*;
       src\Infrastructure.Testing\bin\$(Configuration)\*.*;
       src\Infrastructure.Data\bin\$(Configuration)\*.*
     </BinInclude>
@@ -58,43 +59,49 @@
         <NugetPackageSummary>Onpoint Infrastructure for .NET Projects</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure</NugetPackageId>
         <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
-        <NugetPublishSymbols>true</NugetPublishSymbols>
+        <NugetPublishSymbols>false</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Core">
         <NugetPackageSummary>Onpoint Infrastructure Core for .NET Projects</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure-Core</NugetPackageId>
         <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
-        <NugetPublishSymbols>true</NugetPublishSymbols>
+        <NugetPublishSymbols>false</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Container.CastleWindsor">
         <NugetPackageSummary>Onpoint CastleWindsor Container Support for Infrastructure.Core</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure.Container-CastleWindsor</NugetPackageId>
         <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
-        <NugetPublishSymbols>true</NugetPublishSymbols>
+        <NugetPublishSymbols>false</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Logging.NLog">
         <NugetPackageSummary>Onpoint NLog Logging Support for Infrastructure.Core</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure.Logging-NLog</NugetPackageId>
         <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
-        <NugetPublishSymbols>true</NugetPublishSymbols>
+        <NugetPublishSymbols>false</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Logging.Log4Net">
         <NugetPackageSummary>Onpoint Log4Net Logging Support for Infrastructure.Core</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure.Logging-Log4Net</NugetPackageId>
         <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
-        <NugetPublishSymbols>true</NugetPublishSymbols>
+        <NugetPublishSymbols>false</NugetPublishSymbols>
+    </NugetItem>
+    <NugetItem Include="Infrastructure.Logging.Trace">
+      <NugetPackageSummary>Onpoint Trace Logging Support for Infrastructure.Core</NugetPackageSummary>
+      <NugetPackageId>Onpoint.Infrastructure.Logging-Trace</NugetPackageId>
+      <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
+      <NugetPublishSymbols>false</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Testing">
         <NugetPackageSummary>Onpoint Testing Sample for Infrastructure</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure-Testing</NugetPackageId>
         <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
-        <NugetPublishSymbols>true</NugetPublishSymbols>
+        <NugetPublishSymbols>false</NugetPublishSymbols>
     </NugetItem>
     <NugetItem Include="Infrastructure.Data">
         <NugetPackageSummary>Onpoint Data Sample for Infrastructure</NugetPackageSummary>
         <NugetPackageId>Onpoint.Infrastructure-Data</NugetPackageId>
         <NugetPushUrl>http://go.microsoft.com/fwlink/?LinkID=207106</NugetPushUrl>
-        <NugetPublishSymbols>true</NugetPublishSymbols>
+        <NugetPublishSymbols>false</NugetPublishSymbols>
     </NugetItem>
   </ItemGroup>
 

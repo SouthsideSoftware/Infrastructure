@@ -7,18 +7,17 @@
     <authors>Onpoint On Demand</authors>
     <owners>Onpoint On Demand</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Log4Net logging support for Infrastructure.Core</description>
-    <summary>Onpoint Log4Net Logging Support for Infrastructure.Core (Debug)</summary>
+    <description>Trace logging support for Infrastructure.Core</description>
+    <summary>Onpoint Trace Logging Support for Infrastructure.Core (Debug)</summary>
     <dependencies>
-      <dependency id="log4net" version="1.2.10" />
       <dependency id="Onpoint.Infrastructure-Core" version="0.4.1.0" />
     </dependencies>
     <tags>onpoint</tags>
   </metadata>
   <files>
-    <file src="BuildOutput\bin\Infrastructure.Logging.log4net.dll" target="lib\net40-full" />
-    <file src="BuildOutput\bin\Infrastructure.Logging.log4net.pdb" target="lib\net40-full" />
+    <file src="BuildOutput\bin\Infrastructure.Logging.Trace.dll" target="lib\net40-full" />
+    <file src="BuildOutput\bin\Infrastructure.Logging.Trace.pdb" target="lib\net40-full" />
     <file src="BuildOutput\src\*.cs" target="src" />
-    <file src="BuildOutput\src\Infrastructure.Logging.Log4Net\**\*.cs" target="src\Infrastructure.Logging.Log4Net" />
+    <file src="BuildOutput\src\Infrastructure.Logging.Trace\**\*.cs" target="src\Infrastructure.Logging.Trace" />
   </files>
 </package>

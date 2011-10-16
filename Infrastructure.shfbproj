@@ -27,7 +27,7 @@
     </DocumentationSources>
     <HelpFileFormat>Website</HelpFileFormat>
     <MSHelp2SdkLinkType>Index</MSHelp2SdkLinkType>
-    <HelpTitle>Onpoint Common Infrastructure 0.4.8.0</HelpTitle>
+    <HelpTitle>Onpoint Common Infrastructure 0.4.9.0</HelpTitle>
     <IncludeStopWordList>False</IncludeStopWordList>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
