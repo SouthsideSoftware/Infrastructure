@@ -7,10 +7,9 @@ using Infrastructure.Core.Logging;
 
 namespace Infrastructure.Logging.Trace {
     /// <summary>
-    /// Logger that works with standard .NET trace logging.  Set trace switch TraceLogLevel to control logging.
+    /// Logger that works with standard .NET trace logging.
     /// </summary>
     public class TraceLog : ILog {
-        static TraceSwitch traceLogLevel = new TraceSwitch("TraceLogLevel", "Switch in the config file.");
         /// <summary>
         /// Gets the name of the logger.
         /// </summary>
@@ -21,47 +20,50 @@ namespace Infrastructure.Logging.Trace {
         }
 
         /// <summary>
-        /// Gets <see langword="true"/> if error logging is enabled.
+        /// Gets <see langword="true"/>.
         /// </summary>
+        /// <remarks>Because of the way trace logging works, this always returns true and should not be used.</remarks>
         public bool IsErrorEnabled {
             get {
-                return traceLogLevel.Level >= TraceLevel.Error;
+                return true;
             }
         }
 
         /// <summary>
-        /// Gets <see langword="true"/> if logging is enabled at the fatal level.
+        /// Gets <see langword="true"/>.
         /// </summary>
+        /// <remarks>Because of the way trace logging works, this always returns true and should not be used.</remarks>
         public bool IsFatalEnabled {
             get {
-                return traceLogLevel.Level >= TraceLevel.Error;
+                return true;
             }
         }
 
         /// <summary>
-        /// Gets <see langword="true"/> if debug level logging is enabled.
+        /// Gets <see langword="true"/>.
         /// </summary>
+        /// <remarks>Because of the way trace logging works, this always returns true and should not be used.</remarks>
         public bool IsDebugEnabled {
             get {
-                return traceLogLevel.Level >= TraceLevel.Verbose;
+                return true;
             }
         }
 
         /// <summary>
-        /// Gets <see langword="true"/> if info level logging is enabled.
+        /// Gets <see langword="true"/>.
         /// </summary>
         public bool IsInfoEnabled {
             get {
-                return traceLogLevel.Level >= TraceLevel.Info;
+                return true;
             }
         }
 
         /// <summary>
-        /// Gets <see langword="true"/> if warning level logging is enabled.
+        /// Gets <see langword="true"/>.
         /// </summary>
         public bool IsWarnEnabled {
             get {
-                return traceLogLevel.Level >= TraceLevel.Warning;
+                return true;
             }
         }
 
@@ -122,7 +124,7 @@ namespace Infrastructure.Logging.Trace {
         /// </summary>
         /// <param name="message"></param>
         public void Debug(object message) {
-            System.Diagnostics.Trace.WriteLineIf(IsDebugEnabled, message);
+            System.Diagnostics.Trace.WriteLine(message);
         }
 
         /// <summary>
@@ -131,7 +133,7 @@ namespace Infrastructure.Logging.Trace {
         /// <param name="message"></param>
         /// <param name="exception"></param>
         public void Debug(object message, Exception exception) {
-            System.Diagnostics.Trace.WriteLineIf(IsDebugEnabled, string.Format("{0} {1}", message, exception));
+            System.Diagnostics.Trace.WriteLine(string.Format("{0} {1}", message, exception));
         }
 
         /// <summary>
@@ -140,7 +142,7 @@ namespace Infrastructure.Logging.Trace {
         /// <param name="format"></param>
         /// <param name="args"></param>
         public void DebugFormat(string format, params object[] args) {
-            System.Diagnostics.Trace.WriteLineIf(IsDebugEnabled, string.Format(format, args));
+            System.Diagnostics.Trace.WriteLine(string.Format(format, args));
         }
 
         /// <summary>
@@ -148,7 +150,7 @@ namespace Infrastructure.Logging.Trace {
         /// </summary>
         /// <param name="message"></param>
         public void Info(object message) {
-            System.Diagnostics.Trace.WriteLineIf(IsInfoEnabled, message.ToString());
+            System.Diagnostics.Trace.TraceInformation(message.ToString());
         }
 
         /// <summary>
@@ -157,7 +159,7 @@ namespace Infrastructure.Logging.Trace {
         /// <param name="message"></param>
         /// <param name="exception"></param>
         public void Info(object message, Exception exception) {
-            System.Diagnostics.Trace.WriteLineIf(IsInfoEnabled, string.Format("{0} {1}", message, exception));
+            System.Diagnostics.Trace.TraceInformation(string.Format("{0} {1}", message, exception));
         }
 
         /// <summary>
@@ -166,7 +168,7 @@ namespace Infrastructure.Logging.Trace {
         /// <param name="format"></param>
         /// <param name="args"></param>
         public void InfoFormat(string format, params object[] args) {
-            System.Diagnostics.Trace.WriteLineIf(IsInfoEnabled, string.Format(format, args));
+            System.Diagnostics.Trace.TraceInformation(string.Format(format, args));
         }
 
         /// <summary>

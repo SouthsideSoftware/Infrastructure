@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>Onpoint.Infrastructure.Logging-Log4Net</id>
-    <title>Onpoint Infrastructure Logging-Log4Net</title>
+    <id>Onpoint.Infrastructure.Logging-Trace</id>
+    <title>Onpoint Infrastructure Logging-Trace</title>
     <version>0.4.9.0</version>
     <authors>Onpoint On Demand</authors>
     <owners>Onpoint On Demand</owners>
